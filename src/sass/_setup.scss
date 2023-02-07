@@ -1,0 +1,70 @@
+//PRE SETTINGS
+
+* {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-style: normal;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  color: $black;
+  font-family: $standard-font;
+  font-size: map-get($font-size, standard);
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+//RESPONSIVE SETTINGS
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  body {
+    min-width: 768px;
+    max-width: 1279px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  .container {
+    min-width: 768px;
+    max-width: 1279px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1280px) {
+  body {
+    min-width: 1280px;
+    max-width: none;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 115px;
+  }
+}

@@ -1,0 +1,113 @@
+// section styling - have to be adjusted on tablets and desktop
+.advantages {
+  background-color: $bottom-section-background;
+  margin: 0;
+  padding: 0 20px 97px;
+  min-width: 320px;
+
+  // section title - hidden (had to set up font-size: 0 otherwise white space appeared at the section top)
+  &__title {
+    margin: 0;
+    visibility: hidden;
+    font-size: 0;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 38px;
+    }
+
+    // added png as ::before elements
+    &:first-child::before,
+    &:nth-child(2)::before,
+    &:nth-child(3)::before {
+      content: '';
+      display: block;
+      margin-bottom: 16px;
+      height: 50px;
+      background-size: cover;
+    }
+
+    &:first-child::before {
+      background-image: url(../images/icon1.png);
+      width: 33px;
+    }
+    &:nth-child(2)::before {
+      background-image: url(../images/icon2.png);
+      width: 50px;
+    }
+
+    &:nth-child(3)::before {
+      background-image: url(../images/icon3.png);
+      width: 44px;
+    }
+  }
+
+  // font styling and text wrapping (by width: 70%) - have to be adjusted on tablets and desktop
+  &__text {
+    font-family: $standard-font;
+    font-weight: map-get($font-weight, bold);
+    font-size: map-get($font-size, small);
+    line-height: 1.67;
+    color: $black;
+    width: 70%;
+
+    &--bold {
+      font-family: $header-font;
+      font-weight: map-get($font-weight, regular);
+      font-size: map-get($font-size, advantages-bold-mobile);
+      line-height: 1.145;
+      letter-spacing: map-get($letter-spacing, standard);
+      color: $red-1;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// @media for retina displays
+
+@media screen and (min-device-pixel-ratio: 2),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+  .advantages__item:first-child::before {
+    background-image: url(../images/icon1@2x.png);
+  }
+  .advantages__item:nth-child(2)::before {
+    background-image: url(../images/icon2@2x.png);
+  }
+  .advantages__item:nth-child(3)::before {
+    background-image: url(../images/icon3@2x.png);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .advantages {
+    padding: 27px 0 102px 36px;
+    &__list {
+      display: flex;
+      flex-direction: row;
+    }
+    &__text--normal {
+      font-size: 14px;
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .advantages {
+    padding: 27px 0 102px 36px;
+    &__list {
+      display: flex;
+      flex-direction: row;
+    }
+    &__text--normal {
+      font-size: 16px;
+    }
+    &__text--bold {
+      font-size: 58px;
+    }
+  }
+}

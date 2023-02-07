@@ -1,0 +1,26 @@
+.background-gallery {
+  background-image: linear-gradient(
+    to bottom,
+    $bottom-section-background 0%,
+    $bottom-section-background 40%,
+    $white 40%,
+    $white 100%
+  );
+}
+.gallery {
+  max-width: 1280px;
+  padding: 0;
+  &__heading {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .gallery {
+    margin-bottom: 121px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .gallery {
+    max-width: 1280px;
+  }
+}
