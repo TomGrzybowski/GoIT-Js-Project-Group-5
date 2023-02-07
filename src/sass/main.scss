@@ -1,8 +1,8 @@
 /*
- * Główny plik dla stylów.
+ * Główny plik dla styli.
  * Wszystkie components i variables podłączamy tutaj.
  */
-// @use './setup/modern-normalize';
-// @use './setup/setup.scss'
+@use './setup/modern-normalize';
+@use './setup/setup';
 @use './variables';
 @use './components';
