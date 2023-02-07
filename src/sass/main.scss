@@ -1,10 +1,6 @@
-@import './variables';
-@import './setup';
-@import './hero-header';
-@import './products';
-@import './about';
-@import './advantages';
-@import './gallery';
-@import './reviews';
-@import './contacts';
-@import './footer';
+/*
+ * Główny plik dla stylów.
+ * Wszystkie components i variables podłączamy tutaj.
+ */
+@use './variables';
+@use './components';
