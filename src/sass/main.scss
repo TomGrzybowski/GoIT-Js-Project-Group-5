@@ -6,3 +6,5 @@
 @use './setup/setup';
 @use './variables';
 @use './components';
+
+@import './components/my-library';
