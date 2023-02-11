@@ -292,7 +292,6 @@ body {
   width: 274px;
   height: 439px;
   background-color: var(--color-white);
-  border: 1px solid black;
 }
 
 .movie-card__image {
@@ -300,6 +299,7 @@ body {
   background-color: var(--color-card-background);
   align-items: center;
   display: flex;
+  border-radius: 5px;
 }
 
 .movie-card__details {
@@ -310,6 +310,15 @@ span {
   color: white;
   font-size: 26px;
   margin: 0 auto;
+  display: none;
+}
+
+.image {
+  width: 274px;
+  height: 398px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
 }
 
 /*
