@@ -1,13 +1,3 @@
-body {
-  background-color: rgb(214, 208, 208);
-}
-
-.container {
-  width: 320px;
-  margin: 0 auto;
-  background-color: var(--color-white);
-}
-
 .movies {
   padding: 20px 20px 40px;
 
@@ -25,7 +15,7 @@ body {
 
   &__image {
     height: 402px;
-    background-color: var(--color-card-background);
+    background: var(--color-card-background);
     align-items: center;
     display: flex;
     border-radius: 5px;
@@ -34,12 +24,13 @@ body {
   &__details {
     height: 41px;
   }
-}
-span {
-  color: white;
-  font-size: 26px;
-  margin: 0 auto;
-  display: none;
+
+  &__text {
+    color: var(--color-white);
+    font-size: 26px;
+    margin: 0 auto;
+    // display: none;
+  }
 }
 
 .image {
@@ -49,11 +40,29 @@ span {
   border-radius: 5px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    width: 768px;
-  }
+.movie-title {
+  padding-top: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
 
+.movie-genre {
+  color: var(--color-orange);
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.movie-rating {
+  padding: 1px 6px;
+  color: var(--color-white);
+  background: var(--color-orange);
+  border-radius: 5px;
+  margin-left: 11px;
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .movies {
     padding: 60px 75px 50px 75px;
 
@@ -83,14 +92,6 @@ span {
 }
 
 @media screen and (min-width: 1024px) {
-  body {
-    background-color: rgb(214, 208, 208);
-  }
-
-  .container {
-    width: 1024px;
-  }
-
   .movies {
     padding: 60px 70px 50px;
 
