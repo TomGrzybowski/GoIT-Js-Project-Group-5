@@ -247,6 +247,8 @@ summary {
   padding: 0;
   text-decoration: none;
   font-style: normal;
+  font-family: var(--default-font);
+  font-weight: 500;
 }
 
 ul {
@@ -258,6 +260,26 @@ ul {
   display: none;
 }
 
+body {
+  background-color: var(--body-background);
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  background-color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+  }
+}
 :root {
   --color-black: #000000;
   --color-white: #ffffff;
@@ -265,62 +287,123 @@ ul {
   --color-grey-background: #f7f7f7;
   --color-red: #ff001b;
   --color-font-grey: #8c8c8c;
-  --color-card-background: #0000008f;
+  --color-card-background: linear-gradient(
+    174deg,
+    rgb(117, 116, 116) 0%,
+    rgb(184, 179, 179) 100%
+  );
+  --body-background: #e5e5e5;
 }
 
-body {
-  background-color: rgb(214, 208, 208);
-}
-
-.container {
-  width: 1024px;
-  margin: 0 auto;
-  background-color: var(--color-white);
+:root {
+  --default-font: "Roboto";
 }
 
 .movies {
-  padding: 60px 70px 50px;
+  padding: 20px 20px 40px;
 }
-
 .movies__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
 }
 
 .movie-card {
-  width: 274px;
-  height: 439px;
+  width: 280px;
+  height: 443px;
   background-color: var(--color-white);
+  margin-bottom: 20px;
 }
-
 .movie-card__image {
-  height: 398px;
-  background-color: var(--color-card-background);
+  height: 402px;
+  background: var(--color-card-background);
   align-items: center;
   display: flex;
   border-radius: 5px;
 }
-
 .movie-card__details {
   height: 41px;
 }
-
-span {
-  color: white;
+.movie-card__text {
+  color: var(--color-white);
   font-size: 26px;
   margin: 0 auto;
-  display: none;
 }
 
 .image {
-  width: 274px;
-  height: 398px;
+  width: 280px;
+  height: 402px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
 }
 
+.movie-title {
+  padding-top: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.movie-genre {
+  color: var(--color-orange);
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.movie-rating {
+  padding: 1px 6px;
+  color: var(--color-white);
+  background: var(--color-orange);
+  border-radius: 5px;
+  margin-left: 11px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .movies {
+    padding: 60px 75px 50px 75px;
+  }
+  .movies__list {
+    gap: 30px;
+  }
+  .movie-card {
+    width: 294px;
+    height: 440px;
+    margin-bottom: 0px;
+  }
+  .movie-card__image {
+    height: 398px;
+  }
+  .movie-card__details {
+    height: 42px;
+  }
+  .image {
+    width: 294px;
+    height: 398px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .movies {
+    padding: 60px 70px 50px;
+  }
+  .movies__list {
+    gap: 30px;
+  }
+  .movie-card {
+    width: 274px;
+    height: 439px;
+    margin-bottom: 0px;
+  }
+  .movie-card__image {
+    height: 398px;
+  }
+  .movie-card__details {
+    height: 41px;
+  }
+  .image {
+    width: 274px;
+    height: 398px;
+  }
+}
 /*
  * Główny plik dla styli.
  * Wszystkie components i variables podłączamy tutaj.
