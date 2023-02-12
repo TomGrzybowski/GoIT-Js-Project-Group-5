@@ -42,7 +42,7 @@ async function getAndDisplayTrendingMovies() {
     for (const movie of trendingMovies) {
       const movieDetails = await getMovieDetails(movie.id);
 
-      await createMovieCard(movieDetails);
+      await createMovieCard(movieDetails, true);
     }
   } catch (error) {
     console.log(error.message);
