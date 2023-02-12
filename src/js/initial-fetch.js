@@ -4,19 +4,23 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const API_KEY = '7bfaca5914dfe808eee9ce7ecac1ff40';
 
+async function fetchToJson(url) {
+  const results = await fetch(url);
+  const resultsJSON = await results.json();
+  return resultsJSON;
+}
+
 async function getTrendingMovies() {
-  const trendingMoviesResponse = await fetch(
+  const trendingMovies = await fetchToJson(
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`
   );
-  const trendingMovies = await trendingMoviesResponse.json();
   return trendingMovies.results;
 }
 
 async function getMovieDetails(movieId) {
-  const movieDetailsResponse = await fetch(
+  const movieDetails = await fetchToJson(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
   );
-  const movieDetails = await movieDetailsResponse.json();
 
   const { title, poster_path, genres, release_date, vote_average } =
     movieDetails;
