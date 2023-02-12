@@ -2,37 +2,37 @@ export default function createMovieCard(
   { title, image, genres, year, rating },
   viewRating = false
 ) {
-  const LI = document.createElement('li');
-  LI.classList.add('movie-card');
+  const listItem = document.createElement('li');
+  listItem.classList.add('movie-card');
 
-  const IMAGE_DIV = document.createElement('div');
-  IMAGE_DIV.classList.add('movie-card__image');
+  const imageDiv = document.createElement('div');
+  imageDiv.classList.add('movie-card__image');
   const IMG_HTML = `<img class="image" src="${image}" alt="${title} poster">`;
-  IMAGE_DIV.insertAdjacentHTML('beforeend', IMG_HTML);
+  imageDiv.insertAdjacentHTML('beforeend', IMG_HTML);
 
-  const DETAILS = document.createElement('div');
-  DETAILS.classList.add('movie-card__details');
+  const details = document.createElement('div');
+  details.classList.add('movie-card__details');
 
-  const TITLE = document.createElement('p');
-  TITLE.classList.add('movie-title');
-  TITLE.innerText = title.toUpperCase();
+  const titleParagraph = document.createElement('p');
+  titleParagraph.classList.add('movie-title');
+  titleParagraph.innerText = title.toUpperCase();
 
-  const GENRE = document.createElement('p');
-  GENRE.classList.add('movie-genre');
-  GENRE.innerText = `${genres} | ${year}`;
+  const genreParagraph = document.createElement('p');
+  genreParagraph.classList.add('movie-genre');
+  genreParagraph.innerText = `${genres} | ${year}`;
   if (viewRating) {
-    const RATING = document.createElement('span');
-    RATING.classList.add('movie-rating');
-    RATING.textContent = Math.round(rating * 100) / 100;
-    GENRE.insertAdjacentElement('beforeend', RATING);
+    const ratingSpan = document.createElement('span');
+    ratingSpan.classList.add('movie-rating');
+    ratingSpan.textContent = Math.round(rating * 100) / 100;
+    genreParagraph.insertAdjacentElement('beforeend', ratingSpan);
   }
 
-  DETAILS.insertAdjacentElement('beforeend', TITLE);
-  DETAILS.insertAdjacentElement('beforeend', GENRE);
+  details.insertAdjacentElement('beforeend', titleParagraph);
+  details.insertAdjacentElement('beforeend', genreParagraph);
 
-  LI.insertAdjacentElement('beforeend', IMAGE_DIV);
-  LI.insertAdjacentElement('beforeend', DETAILS);
+  listItem.insertAdjacentElement('beforeend', imageDiv);
+  listItem.insertAdjacentElement('beforeend', details);
 
-  const LIST = document.querySelector('.movies__list');
-  LIST.insertAdjacentElement('beforeend', LI);
+  const moviesList = document.querySelector('.movies__list');
+  moviesList.insertAdjacentElement('beforeend', listItem);
 }
