@@ -4,6 +4,7 @@ export default function createMovieCard({
   genres,
   year,
   rating,
+  viewRating = false,
 }) {
   const LI = document.createElement('li');
   LI.classList.add('movie-card');
@@ -23,6 +24,12 @@ export default function createMovieCard({
   const GENRE = document.createElement('p');
   GENRE.classList.add('movie-genre');
   GENRE.innerText = `${genres} | ${year}`;
+  if (viewRating) {
+    const RATING = document.createElement('span');
+    RATING.classList.add('movie-rating');
+    RATING.textContent = Math.round(rating * 100) / 100;
+    GENRE.insertAdjacentElement('beforeend', RATING);
+  }
 
   DETAILS.insertAdjacentElement('beforeend', TITLE);
   DETAILS.insertAdjacentElement('beforeend', GENRE);
