@@ -1,11 +1,7 @@
-export default function createMovieCard({
-  title,
-  image,
-  genres,
-  year,
-  rating,
-  viewRating = false,
-}) {
+export default function createMovieCard(
+  { title, image, genres, year, rating },
+  viewRating = false
+) {
   const LI = document.createElement('li');
   LI.classList.add('movie-card');
 
