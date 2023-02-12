@@ -30,7 +30,6 @@ export default function createMovieCard({
   LI.insertAdjacentElement('beforeend', IMAGE_DIV);
   LI.insertAdjacentElement('beforeend', DETAILS);
 
-  //   return LI;
   const LIST = document.querySelector('.movies__list');
   LIST.insertAdjacentElement('beforeend', LI);
 }
