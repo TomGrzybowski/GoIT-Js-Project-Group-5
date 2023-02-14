@@ -19,6 +19,8 @@
 }
 .header__logo-nav {
     display: flex;
+    width: 85%;
+    justify-content: space-between;
     padding-top: 46px;    
 }
 .header__logo-icon {
@@ -34,8 +36,9 @@
 }
 .navigation__list {
     display: flex;
+    justify-content: space-between;
     margin: 0;
-    padding-left: 114px;
+    padding-left: 91px;
 }
 .navigation__item:not(:last-child) {
     padding-right: 39px;
@@ -63,6 +66,12 @@
     border-bottom: 0.5px solid var(--color-white);
     background: none;
 }
+#search-box:hover,
+#search-box:focus {
+   border: 1px solid var(--color-white);
+   border-radius: 4px;
+   box-shadow: 0 8px 43px var(--color-white);
+}
 .search-form {
     display: flex;
     justify-content: flex-end;
@@ -73,8 +82,10 @@
     stroke-width: 3px;
     border: none;
     background: none;
-    padding: 0;
+    padding-left: 0;
+    padding-top: 2px;
     position: absolute;
+    cursor: pointer;
 }
 .header__info {
     font-size: 14px;
@@ -123,9 +134,6 @@
             background-image: linear-gradient(var(--color-background-image), var(--color-background-image)), url("../images/background-home-tablet@2x.jpg");
         }
     }
-    .header__logo {
-        margin-left: 51px;
-    }
     .header__logo-nav {
         align-items: center;
     }
@@ -135,8 +143,8 @@
         font-weight: 500;
         line-height: 35px;
         color: var(--color-white);
-        padding-left: 12px;
-        padding-right: 189px;
+        padding-left: 7px;
+        padding-right: 155px;
     }
     .search-form {
         padding-left: 30px;
@@ -172,9 +180,10 @@
         gap: 15px;
     }
 }
+
 @media (min-width: 1024px) { 
     .header__container {
-        width: 100%;
+        max-width: 1400px;
         height: 230px;
         background-color: var(--color-background-image);
         background-image: linear-gradient(var(--color-background-image), var(--color-background-image)), url("../images/background-home-computer.jpg");
@@ -190,10 +199,10 @@
         }
     }
     .header__logo-text {
-        margin-right: 267px;
+        margin-right: 257px;
     }
     .header-library__container {
-        width: 100%;
+        max-width: 1400px;
         height: 230px;
         background-color: var(--color-background-image);
         background-image: linear-gradient(var(--color-background-image), var(--color-background-image)), url("../images/background-library-computer.jpg");
