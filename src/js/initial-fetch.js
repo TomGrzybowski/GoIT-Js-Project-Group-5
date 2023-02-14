@@ -10,9 +10,9 @@ async function fetchToJson(url) {
   return resultsJSON;
 }
 
-async function getTrendingMovies() {
+async function getTrendingMovies(page = 1) {
   const trendingMovies = await fetchToJson(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`
   );
   return trendingMovies.results;
 }
@@ -33,16 +33,16 @@ async function getMovieDetails(movieId) {
   return { title, image, genres: genresString, year, rating };
 }
 
-async function getAndDisplayTrendingMovies() {
+async function getAndDisplayTrendingMovies(page = 1) {
   loading();
   try {
-    const trendingMovies = await getTrendingMovies();
+    const trendingMovies = await getTrendingMovies(page);
     const MAIN = document.querySelector('.movies__list');
     MAIN.innerHTML = '';
     for (const movie of trendingMovies) {
       const movieDetails = await getMovieDetails(movie.id);
 
-      await createMovieCard(movieDetails, true);
+      await createMovieCard(movieDetails);
     }
   } catch (error) {
     console.log(error.message);
@@ -51,4 +51,4 @@ async function getAndDisplayTrendingMovies() {
   Loading.remove();
 }
 
-getAndDisplayTrendingMovies();
+getAndDisplayTrendingMovies(1);
