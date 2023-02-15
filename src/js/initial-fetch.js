@@ -58,17 +58,3 @@ export async function getAndDisplayTrendingMovies(page = 1) {
 
   Loading.remove();
 }
-<<<<<<< HEAD
-
-getAndDisplayTrendingMovies(1);
-
-const loadButton = document.querySelector('.load-more-button');
-
-loadButton.addEventListener('click', handleLoadMore());
-
-async function handleLoadMore() {
-  page += 1;
-  getAndDisplayTrendingMovies(page);
-}
-=======
->>>>>>> main
