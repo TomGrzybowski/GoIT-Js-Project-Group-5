@@ -95,6 +95,11 @@
     &__list {
       gap: 30px;
     }
+
+    &__pagination {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .movie-card {
@@ -115,4 +120,44 @@
     width: 274px;
     height: 398px;
   }
+}
+
+.load-more-button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  &__svg {
+    stroke: var(--color-black);
+    fill: var(--color-black);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  // &__svg:hover {
+  //   stroke: var(--color-white);
+  //   fill: var(--color-white);
+  // }
+}
+
+.right {
+  transform: rotate(180deg);
 }
