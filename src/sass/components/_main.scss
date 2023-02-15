@@ -11,7 +11,7 @@
   width: 280px;
   height: 443px;
   background-color: var(--color-white);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   &__image {
     height: 402px;
@@ -22,15 +22,9 @@
   }
 
   &__details {
-    height: 41px;
+    // height: 41px;
     font-weight: 500;
-  }
-
-  &__text {
-    color: var(--color-white);
-    font-size: 26px;
-    margin: 0 auto;
-    // display: none;
+    padding-top: 10px;
   }
 }
 
@@ -42,16 +36,19 @@
 }
 
 .movie-title {
-  padding-top: 10px;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
+  margin: 0;
+  line-height: 16px;
 }
 
 .movie-genre {
   color: var(--color-orange);
   font-size: 12px;
   line-height: 14px;
+  margin: 0;
+  line-height: 16px;
 }
 
 .movie-rating {
