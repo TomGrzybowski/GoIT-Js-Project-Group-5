@@ -6,3 +6,7 @@
 @use './setup/setup';
 @use './variables';
 @use './components';
+
+.hidden {
+  display: none;
+}
