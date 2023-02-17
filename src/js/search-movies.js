@@ -4,9 +4,9 @@ import loading from './loading';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
-async function searchMovies(keyword) {
+async function searchMovies(keyword, page) {
   const apiKey = "7bfaca5914dfe808eee9ce7ecac1ff40";
-  const url =`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}`;
+  const url =`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}`;
 
   try{
       const response = await fetch(url);
@@ -25,7 +25,7 @@ async function getAndDisplayMovies(page = 1) {
   loading();
   try {
     
-    const movies = await searchMovies(keyword);
+    const movies = await searchMovies(keyword, page);
     console.log(movies)
     const MAIN = document.querySelector('.movies__list');
     MAIN.innerHTML = '';

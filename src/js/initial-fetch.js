@@ -17,7 +17,7 @@ async function getTrendingMovies(page = 1) {
   return trendingMovies;
 }
 
-async function getMovieDetails(movieId) {
+export async function getMovieDetails(movieId) {
   const movieDetails = await fetchToJson(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
   );
