@@ -33,18 +33,15 @@ async function getMovieDetails(movieId) {
   return { title, image, genres: genresString, year, rating };
 }
 
-function createPagination() {
-  const paginationDiv = document.querySelector('.movies__pagination');
+// function createPagination() {
+//   const paginationDiv = document.querySelector('.movies__pagination');
 
-  const paginationButton = document.createElement('button');
-  paginationButton.classList.add('load-more-button');
-  const arrowButton = `<button class="load-more-button"><svg class="main__svg" width="16" heigth="16">
-  <use href="./icons/icons.svg#arrow"></use>
-</svg></button>`;
+//   const paginationButton = document.createElement('button');
+//   paginationButton.classList.add('load-more-button');
 
-  paginationDiv.insertAdjacentHTML('beforeend', arrowButton);
-  paginationDiv.insertAdjacentElement('beforeend', paginationButton);
-}
+//   paginationDiv.insertAdjacentHTML('beforeend', arrowButton);
+//   paginationDiv.insertAdjacentElement('beforeend', paginationButton);
+// }
 
 export async function getAndDisplayTrendingMovies(page = 1) {
   loading();
