@@ -12,7 +12,7 @@ async function searchMovies(keyword) {
       const response = await fetch(url);
       const data = await response.json();
       
-      return data.results;
+      return data;
   } catch (error) {
       console.log(error);
   }
@@ -21,7 +21,7 @@ async function searchMovies(keyword) {
 let keyword = "action"
 
 
-async function getAndDisplayMovies() {
+async function getAndDisplayMovies(page = 1) {
   loading();
   try {
     
@@ -29,12 +29,13 @@ async function getAndDisplayMovies() {
     console.log(movies)
     const MAIN = document.querySelector('.movies__list');
     MAIN.innerHTML = '';
-    for (const movie of movies) {
+    for (const movie of movies.results) {
       const movieDetails = await getMovieDetails(movie.id);
-      
-      if (movieDetails.poster_path !== null) {
-        await createMovieCard(movieDetails);
-      }
+     await createMovieCard(movieDetails);
+     const paginationData = {
+      currentPage: movies.page,
+      amountOfPages: movies.total_pages,
+    };
     }
   } catch (error) {
     console.log(error.message);
