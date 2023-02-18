@@ -8,7 +8,8 @@
     width: 16px;
     height: 16px;
     display: flex;
-    align-items: center;
+    position: relative;
+    left: 4px;
   }
 }
 
@@ -22,6 +23,7 @@
 
   &__pagination {
     margin: 0 auto;
+    display: flex;
   }
 }
 
@@ -40,7 +42,6 @@
   }
 
   &__details {
-    // height: 41px;
     font-weight: 500;
     padding-top: 10px;
   }
@@ -145,6 +146,7 @@
   height: 40px;
   border: none;
   background-color: var(--color-white);
+  border: 1px solid black;
 
   &:hover {
     background-color: var(--color-orange);
@@ -152,6 +154,11 @@
   }
 }
 
-.next {
+.right {
   transform: rotate(180deg);
+}
+
+.active {
+  background-color: var(--color-orange);
+  color: var(--color-white);
 }

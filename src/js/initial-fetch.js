@@ -33,22 +33,13 @@ async function getMovieDetails(movieId) {
   return { title, image, genres: genresString, year, rating };
 }
 
-// function createPagination() {
-//   const paginationDiv = document.querySelector('.movies__pagination');
-
-//   const paginationButton = document.createElement('button');
-//   paginationButton.classList.add('load-more-button');
-
-//   paginationDiv.insertAdjacentHTML('beforeend', arrowButton);
-//   paginationDiv.insertAdjacentElement('beforeend', paginationButton);
-// }
-
 export async function getAndDisplayTrendingMovies(page = 1) {
   loading();
   try {
-    const trendingMovies = await getTrendingMovies(page);
+    const trendingMovies = await getTrendingMovies(1);
 
     const MAIN = document.querySelector('.movies__list');
+
     MAIN.innerHTML = '';
     for (const movie of trendingMovies.results) {
       const movieDetails = await getMovieDetails(movie.id);
@@ -60,8 +51,7 @@ export async function getAndDisplayTrendingMovies(page = 1) {
       amountOfPages: trendingMovies.total_pages,
     };
 
-    console.log(paginationData);
-    createPagination();
+    createPagination(paginationData);
   } catch (error) {
     console.log(error.message);
   }
@@ -69,4 +59,76 @@ export async function getAndDisplayTrendingMovies(page = 1) {
   Loading.remove();
 }
 
-// { currentPage, amountOfPages }
+//
+//
+
+//
+//
+
+//
+//
+function createPagination({ currentPage, amountOfPages }) {
+  const nextButton = document.querySelector('#next-button');
+  const prevButton = document.querySelector('#prev-button');
+  const paginationNumbers = document.querySelector('.pagination-numbers');
+  const prevDots = document.querySelector('#prev-dots');
+  const nextDots = document.querySelector('#next-dots');
+  const currentPageButton = document.querySelector(
+    `.pagination-button-${currentPage}`
+  );
+
+  function paginationButtonCreation(currentPage) {
+    const paginationButton = document.createElement('button');
+    paginationButton.classList.add('pagination-button');
+    paginationButton.classList.add(`pagination-button-${currentPage}`);
+    paginationButton.innerHTML = currentPage;
+
+    paginationNumbers.insertAdjacentElement('beforeend', paginationButton);
+  }
+
+  const getPaginationButtons = () => {
+    for (let i = 2; i <= 6; i++) {
+      paginationButtonCreation(i);
+      const selectedButton = document.querySelector(`.pagination-button-${i}`);
+
+      selectedButton.textContent = currentPage + (i - 2);
+
+      if (currentPage === currentPage + (i - 2)) {
+        selectedButton.classList.add('active');
+      }
+      const firstButton = document.querySelector('.pagination-button-1');
+      const lastButton = document.querySelector('.pagination-button-7');
+      firstButton.classList.add('hidden');
+      lastButton.textContent = amountOfPages;
+    }
+
+    if (currentPage === 1) {
+      prevButton.classList.add('hidden');
+      prevDots.classList.add('hidden');
+    }
+    if (currentPage === amountOfPages) {
+      nextButton.classList.add('hidden');
+      nextDots.classList.add('hidden');
+    }
+  };
+  getPaginationButtons();
+
+  // function dotsAndArrowsRemoval(currentPage, amountOfPages) {}
+
+  const button = document.querySelector('.pagination-button');
+  button.addEventListener('click', handleActivePageNumber(currentPage));
+  console.log(currentPage);
+}
+
+//
+
+//
+
+//
+//
+//
+//
+//
+//
+//
+//

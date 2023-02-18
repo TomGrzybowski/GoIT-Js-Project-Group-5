@@ -2,9 +2,7 @@
   <div class="movies">
     <ul class="movies__list">
       <li class="movie-card">
-        <div class="movie-card__image">
-          <!-- <img class="image" src="" alt="" /> -->
-        </div>
+        <div class="movie-card__image"></div>
         <div class="movie-card__details">
           <p class="movie-title"></p>
           <p class="movie-genre">
@@ -87,13 +85,19 @@
     </ul>
   </div>
   <div class="movies__pagination">
-    <button class="pagination-button">
+    <button class="pagination-button" id="prev-button">
       <svg class="main__svg" width="16" heigth="16">
         <use href="./icons/icons.svg#arrow"></use>
       </svg>
     </button>
-    <!-- <div class="pagination-button"></div> -->
-    <button class="pagination-button">
+
+    <button class="pagination-button pagination-button-1">1</button>
+    <button class="pagination-button" id="prev-dots">...</button>
+    <div class="pagination-numbers"></div>
+    <button class="pagination-button" id="next-dots">...</button>
+    <button class="pagination-button pagination-button-7"></button>
+
+    <button class="pagination-button" id="next-button">
       <svg class="main__svg right" width="16" heigth="16">
         <use href="./icons/icons.svg#arrow"></use>
       </svg>
