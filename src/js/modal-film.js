@@ -1,7 +1,7 @@
 export function addModal(listItem) {
   openModal(listItem);
   closeModal();
-  createFilmModal();
+  // createFilmModal();
 }
 
 const modal = document.querySelector('[data-modal]');
@@ -29,7 +29,7 @@ const closeModal = () => {
 
 //end of modal opening and closing
 
-// poniżej produkują się ważne rzeczy 
+// poniżej produkują się ważne rzeczy
 
 // function createFilmModal({
 //   poster_path,
@@ -100,4 +100,3 @@ const closeModal = () => {
 // function removeFilmInfoModal() {
 //   modalFilm.innerHTML = "";
 // }
-
