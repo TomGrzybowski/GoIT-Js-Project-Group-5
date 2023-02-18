@@ -26,7 +26,7 @@ export default function createMovieCard(
   
   if(genres.length === 0){
     genres = 'undefined'
-  } else if (year === '') {
+  } if (year === '') {
     year = 'undefined'
   }
   genreParagraph.innerText = `${genres} | ${year}`;
