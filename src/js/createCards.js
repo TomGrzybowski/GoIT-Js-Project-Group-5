@@ -24,9 +24,9 @@ export default function createMovieCard(
   const genreParagraph = document.createElement('p');
   genreParagraph.classList.add('movie-genre');
   
-  if(genres.length === 0) {
+  if(genres.length == 0) {
     movieGenre.innerText = `undefined | ${year}`
-  } else if(year === "") {
+  } else if(year == "") {
     genreParagraph.innerText = `${genres} | undefined`
   }  
     genreParagraph.innerText = `${genres} | ${year}`;
