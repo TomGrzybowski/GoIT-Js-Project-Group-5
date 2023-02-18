@@ -460,12 +460,21 @@ ul {
   }
 }
 .is-hidden {
-  overflow: hidden;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 250ms ease-in-out;
+  display: none;
 }
 
+.is-visible {
+  animation: open 1000ms;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .modal__background {
   margin: 0;
   position: fixed;
@@ -477,19 +486,16 @@ ul {
 }
 
 .modal-film {
-  margin: 0px;
-  margin-top: 20px;
-  position: absolute;
+  position: fixed;
   display: flex;
   background-color: var(--color-white);
   width: 280px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
   padding: 20px;
   font-weight: 500;
   padding-top: 18px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .modal-film__container {
   margin: 0;
@@ -498,23 +504,22 @@ ul {
 }
 .modal-film__close-btn {
   display: flex;
-  margin-left: 228px;
-  width: 14px;
-  height: 14px;
   position: absolute;
   border-style: none;
   cursor: pointer;
   border-style: none;
-  left: 8px;
-  top: 22px;
+  right: 10px;
+  top: 15px;
   background-color: var(--color-white);
 }
 .modal-film__close-icon {
-  width: 14px;
-  height: 14px;
+  width: 32px;
+  height: 32px;
   stroke: black;
   fill: black;
   position: absolute;
+  right: 0;
+  top: 0;
 }
 .modal-film__close-icon:hover {
   stroke: var(--color-modal-film);
@@ -640,7 +645,6 @@ ul {
 
 @media screen and (min-width: 658px) and (max-width: 884px) {
   .modal-film {
-    margin-top: 100px;
     padding: 28px;
     width: 618px;
     flex-direction: column;
@@ -651,9 +655,6 @@ ul {
     display: flex;
     flex-direction: row;
     gap: 32px;
-  }
-  .modal-film__close-btn {
-    margin-left: 566px;
   }
   .modal-film__poster-box {
     padding-top: 0px;
@@ -683,7 +684,6 @@ ul {
 }
 @media screen and (min-width: 885px) {
   .modal-film {
-    margin-top: 100px;
     padding: 30px;
     width: 882px;
     flex-direction: column;
@@ -694,9 +694,6 @@ ul {
     display: flex;
     flex-direction: row;
     gap: 32px;
-  }
-  .modal-film__close-btn {
-    margin-left: 830px;
   }
   .modal-film__poster-box {
     padding-top: 0px;

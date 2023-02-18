@@ -5,11 +5,13 @@ export function addModal(listItem) {
 }
 
 const modal = document.querySelector('[data-modal]');
-const modalFilm = document.querySelector('.modal-film');
+const modalBox = document.querySelector('.modal-film');
 
 const openModal = listItem => {
   listItem.addEventListener('click', () => {
-    modal.classList.remove('hidden');
+    modal.classList.remove('is-hidden');
+
+    modalBox.classList.add('is-visible');
   });
 };
 
@@ -17,14 +19,24 @@ const closeModal = () => {
   document
     .querySelector('.modal-film__close-btn')
     .addEventListener('click', () => {
-      modal.classList.add('hidden');
+      modal.classList.add('is-hidden');
+      modalBox.classList.remove('is-visible');
     });
 
   window.onclick = function (event) {
     if (event.target === modal) {
-      modal.classList.add('hidden');
+      modal.classList.add('is-hidden');
+      modalBox.classList.remove('is-visible');
     }
   };
+
+  const escapeClose = e => {
+    if (e.key === 'Escape') {
+      modal.classList.add('is-hidden');
+      modalBox.classList.remove('is-visible');
+    }
+  };
+  document.addEventListener('keyup', escapeClose);
 };
 
 //end of modal opening and closing

@@ -1,8 +1,18 @@
 .is-hidden {
-  overflow: hidden;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 250ms ease-in-out;
+  display: none;
+}
+
+.is-visible {
+  animation: open 1000ms;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal__background {
@@ -16,16 +26,16 @@
 }
 
 .modal-film {
-  position: absolute;
+  position: fixed;
   display: flex;
   background-color: var(--color-white);
   width: 280px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   padding: 20px;
   font-weight: 500;
   padding-top: 18px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
   &__container {
     margin: 0;
