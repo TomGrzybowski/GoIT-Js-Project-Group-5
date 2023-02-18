@@ -2,9 +2,12 @@ export default function createMovieCard(
   { title, image, genres, year, rating },
   viewRating = false
 ) {
-  const movieGenre = document.querySelector('.movie-genre')
+  const movieGenre = document.querySelector('.movie-genre');
 
-  const posterPath = image.substring(image.length - 4) === "null" ? 'https://via.placeholder.com/500x750.png?text=No+Image+Available' : `https://image.tmdb.org/t/p/w500${image}`;
+  const posterPath =
+    image.substring(image.length - 4) === 'null'
+      ? 'https://via.placeholder.com/500x750.png?text=No+Image+Available'
+      : `https://image.tmdb.org/t/p/w500${image}`;
 
   const listItem = document.createElement('li');
   listItem.classList.add('movie-card');
@@ -23,15 +26,16 @@ export default function createMovieCard(
 
   const genreParagraph = document.createElement('p');
   genreParagraph.classList.add('movie-genre');
-  
-  if(genres.length === 0){
-    genres = 'undefined'
-  } if (year === '') {
-    year = 'undefined'
+
+  if (genres.length === 0) {
+    genres = 'undefined';
+  }
+
+  if (year === '') {
+    year = 'undefined';
   }
   genreParagraph.innerText = `${genres} | ${year}`;
 
- 
   if (viewRating) {
     const ratingSpan = document.createElement('span');
     ratingSpan.classList.add('movie-rating');
