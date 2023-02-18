@@ -3,7 +3,7 @@ import { getMovieDetails } from './initial-fetch';
 import loading from './loading';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-
+const alert = document.querySelector(".header__info")
 
 
 async function searchMovies(keyword, page) {
@@ -13,7 +13,7 @@ async function searchMovies(keyword, page) {
   try{
       const response = await fetch(url);
       const data = await response.json();
-      
+     
       return data;
   } catch (error) {
       console.log(error);
@@ -28,7 +28,6 @@ let keyword;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(input.value);
   keyword = input.value;
   getAndDisplayMovies();
 
@@ -36,19 +35,27 @@ form.addEventListener("submit", (e) => {
 
 
 async function getAndDisplayMovies(page = 1) {
+  alert.classList.add("hidden")
   loading();
   try {
   
-   
     const movies = await searchMovies(keyword, page);
     // console.log(movies)
     const MAIN = document.querySelector('.movies__list');
+    
     MAIN.innerHTML = '';
+
+    const results = movies.results;
+
+    if(results.length === 0) {
+      alert.classList.remove("hidden")
+    }
+  
     for (const movie of movies.results) {
       const movieDetails = await getMovieDetails(movie.id);
-   
+      
       await createMovieCard(movieDetails);
-    
+
       const paginationData = {
       currentPage: movies.page,
       amountOfPages: movies.total_pages,

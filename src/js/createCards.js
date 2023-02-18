@@ -24,13 +24,13 @@ export default function createMovieCard(
   const genreParagraph = document.createElement('p');
   genreParagraph.classList.add('movie-genre');
   
-  if(genres.length == 0) {
-    movieGenre.innerText = `undefined | ${year}`
-  } else if(year == "") {
-    genreParagraph.innerText = `${genres} | undefined`
-  }  
-    genreParagraph.innerText = `${genres} | ${year}`;
-  
+  if(genres.length === 0){
+    genres = 'undefined'
+  } else if (year === '') {
+    year = 'undefined'
+  }
+  genreParagraph.innerText = `${genres} | ${year}`;
+
  
   if (viewRating) {
     const ratingSpan = document.createElement('span');
