@@ -1,8 +1,8 @@
-// .is-hidden {
-//      opacity: 0;
-//      visibility: hidden;
-//      pointer-events: none;
-// }
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 .team-backdrop {
     position: fixed;
     left: 0;
@@ -23,9 +23,9 @@
     background-image: url("../images/background-library-mobile.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
+    width: 280px;
     height: 510px;
-    overflow: scroll;
+    overflow: auto;
 }
 .team-backdrop__box {
     width: 240px;
@@ -46,15 +46,18 @@
     cursor: pointer;
     pointer-events: visible;
     stroke: var(--color-white);
+    stroke-width: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
+    border: 2px solid var(--color-white);
 }
 .close-button:hover,
 .close-button:focus {
     transform: scale(1.10);
-    border: 2px solid var(--color-white);
+    stroke: var(--color-black);
+    background-color: var(--color-white);
 }
 .team__heading {
     color: var(--color-white);
@@ -71,6 +74,7 @@ img {
 }
 .team__image {
     width: 160px;
+    height: 190px;
     padding-top: 15px;
     margin: 0 auto;
 }
@@ -91,19 +95,21 @@ img {
 }
 .team__list,
 .team__social-media {
-  margin-left: 0;
-  list-style-type: none;
-  padding-left: 0;
+    margin-left: 0;
+    list-style-type: none;
+    padding-left: 0;
 
 }
 .team__icon {
-  fill: var(--color-white);
-}
-.team__icon:hover,
-.team__icon:focus {
+    fill: var(--color-white);
     border: 2px solid var(--color-white);
     border-radius: 50%;
     padding: 5px 8px;
+}
+.team__icon:hover,
+.team__icon:focus {
+    fill: var(--color-black);
+    background-color: var(--color-white);
 }
 .team__social-media {
     display: flex;
@@ -124,19 +130,33 @@ img {
 }
 .team__list {
     margin: 0;
+    padding-top: 10px;
 }
 @media (min-width: 768px) {
     .team-backdrop__container {
-        width: 80%;
+        width: 618px;
         height: 562px;
     }
     .team-backdrop__box {
-        max-width: 618px;
+        width: 580px;
     }
+    .team__item {
+        width: 240px;
+    }
+    .team__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 10px;
+     }
 }
 @media (min-width: 1024px) {
     .team-backdrop__container {
-        width: 500px;
-        height: 568px;
+        width: 882px;
+        height: 530px;
+    }
+    .team-backdrop__box {
+        width: 840px;
     }
 }
