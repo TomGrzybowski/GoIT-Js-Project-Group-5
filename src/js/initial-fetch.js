@@ -17,12 +17,11 @@ async function getTrendingMovies(page = 1) {
   return trendingMovies;
 }
 
-async function getMovieDetails(movieId) {
+export async function getMovieDetails(movieId) {
   const movieDetails = await fetchToJson(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
   );
-
-  const { title, poster_path, genres, release_date, vote_average } =
+  const { id, title, poster_path, genres, release_date, vote_average } =
     movieDetails;
 
   const image = `https://image.tmdb.org/t/p/w500/${poster_path}`;
@@ -30,7 +29,7 @@ async function getMovieDetails(movieId) {
   const rating = vote_average;
   const genresString = genres.map(g => g.name).join(', ');
 
-  return { title, image, genres: genresString, year, rating };
+  return { id, title, image, genres: genresString, year, rating };
 }
 
 export async function getAndDisplayTrendingMovies(page = 1) {
