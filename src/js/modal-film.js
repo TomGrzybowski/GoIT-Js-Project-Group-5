@@ -2,12 +2,8 @@ import { buttonsListeners } from './local-storage';
 
 export function addModal() {
   document.querySelector('.movies__list').addEventListener('click', openModal);
-  // openModal();
-  // closeModal();
-
   // createFilmModal();
 }
-// const movieId = movie.dataset.movieId;
 
 const modal = document.querySelector('[data-modal]');
 const modalBox = document.querySelector('.modal-film');
@@ -24,7 +20,6 @@ function openModal(event) {
   document
     .querySelector('.movies__list')
     .removeEventListener('click', openModal);
-  // buttonsListeners(listItem.dataset.movieId);
 }
 
 const closeModal = () => {
