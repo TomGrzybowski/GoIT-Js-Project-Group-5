@@ -1,7 +1,7 @@
 import { addModal } from './modal-film';
 
 export default function createMovieCard(
-  { title, image, genres, year, rating },
+  { id, title, image, genres, year, rating },
   viewRating = false
 ) {
   const movieGenre = document.querySelector('.movie-genre');
@@ -13,6 +13,7 @@ export default function createMovieCard(
 
   const listItem = document.createElement('li');
   listItem.classList.add('movie-card');
+  listItem.dataset.movieId = id;
 
   const imageDiv = document.createElement('div');
   imageDiv.classList.add('movie-card__image');
