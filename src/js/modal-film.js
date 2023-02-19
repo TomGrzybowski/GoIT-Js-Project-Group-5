@@ -1,3 +1,5 @@
+import { buttonsListeners } from './local-storage';
+
 export function addModal(listItem) {
   openModal(listItem);
   closeModal();
@@ -8,11 +10,9 @@ const modal = document.querySelector('[data-modal]');
 const modalBox = document.querySelector('.modal-film');
 
 const openModal = listItem => {
-  listItem.addEventListener('click', () => {
-    modal.classList.remove('is-hidden');
-
-    modalBox.classList.add('is-visible');
-  });
+  modal.classList.remove('is-hidden');
+  modalBox.classList.add('is-visible');
+  buttonsListeners(listItem.dataset.movieId);
 };
 
 const closeModal = () => {
