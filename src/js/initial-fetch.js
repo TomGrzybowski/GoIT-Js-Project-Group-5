@@ -36,7 +36,7 @@ async function getMovieDetails(movieId) {
 export async function getAndDisplayTrendingMovies(page = 1) {
   loading();
   try {
-    const trendingMovies = await getTrendingMovies(1);
+    const trendingMovies = await getTrendingMovies(2);
 
     const MAIN = document.querySelector('.movies__list');
 
@@ -73,6 +73,8 @@ function createPagination({ currentPage, amountOfPages }) {
   const paginationNumbers = document.querySelector('.pagination-numbers');
   const prevDots = document.querySelector('#prev-dots');
   const nextDots = document.querySelector('#next-dots');
+  const firstButton = document.querySelector('.pagination-button-1');
+  const lastButton = document.querySelector('.pagination-button-7');
   const currentPageButton = document.querySelector(
     `.pagination-button-${currentPage}`
   );
@@ -86,7 +88,7 @@ function createPagination({ currentPage, amountOfPages }) {
     paginationNumbers.insertAdjacentElement('beforeend', paginationButton);
   }
 
-  const getPaginationButtons = () => {
+  const firstPageSelected = () => {
     for (let i = 2; i <= 6; i++) {
       paginationButtonCreation(i);
       const selectedButton = document.querySelector(`.pagination-button-${i}`);
@@ -96,8 +98,6 @@ function createPagination({ currentPage, amountOfPages }) {
       if (currentPage === currentPage + (i - 2)) {
         selectedButton.classList.add('active');
       }
-      const firstButton = document.querySelector('.pagination-button-1');
-      const lastButton = document.querySelector('.pagination-button-7');
       firstButton.classList.add('hidden');
       lastButton.textContent = amountOfPages;
     }
@@ -106,12 +106,20 @@ function createPagination({ currentPage, amountOfPages }) {
       prevButton.classList.add('hidden');
       prevDots.classList.add('hidden');
     }
+
+    if (currentPage === 2) {
+      prevDots.classList.add('hidden');
+      firstButton.classList.remove('hidden');
+      currentPage === currentPage + (i - 6);
+    }
+
     if (currentPage === amountOfPages) {
       nextButton.classList.add('hidden');
       nextDots.classList.add('hidden');
     }
   };
-  getPaginationButtons();
+
+  firstPageSelected();
 
   // function dotsAndArrowsRemoval(currentPage, amountOfPages) {}
 
