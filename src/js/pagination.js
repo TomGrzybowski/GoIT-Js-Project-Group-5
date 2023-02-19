@@ -8,6 +8,8 @@
 //     `.pagination-button-${currentPage}`
 //   );
 
+import { getAndDisplayTrendingMovies } from './initial-fetch';
+
 //   //   function paginationButtonCreation(currentPage) {
 //   //     const paginationButton = document.createElement('button');
 //   //     paginationButton.classList.add('pagination-button');
@@ -121,9 +123,13 @@ function checkAndRemoveArrows(currentPage, totalPages) {
 
   if (currentPage === 1) {
     leftArrow.classList.add('hidden');
+  } else {
+    leftArrow.classList.remove('hidden');
   }
   if (currentPage === totalPages) {
     rightArrow.classList.add('hidden');
+  } else {
+    rightArrow.classList.remove('hidden');
   }
 }
 
@@ -133,13 +139,17 @@ function checkAndRemoveDots(currentPage, totalPages) {
 
   if (currentPage <= 4) {
     leftDots.classList.add('hidden');
+  } else {
+    leftDots.classList.remove('hidden');
   }
   if (currentPage >= totalPages - 3 || totalPages < 7) {
     rightDots.classList.add('hidden');
+  } else {
+    rightDots.classList.remove('hidden');
   }
 }
 
-export function createPagination({ currentPage, totalPages }) {
+export function createPagination({ currentPage, totalPages }, source) {
   const pagination = document.querySelector('.movies__pagination');
   const buttons = pagination.querySelectorAll('.pagination-button');
 
@@ -161,6 +171,7 @@ export function createPagination({ currentPage, totalPages }) {
     if (i === 1) {
       //button 1
       if (currentPage > 3) {
+        button.classList.remove('hidden');
         continue;
       } else if (currentPage <= 3) {
         button.classList.add('hidden');
@@ -171,6 +182,7 @@ export function createPagination({ currentPage, totalPages }) {
       if (currentPage - 2 > 0) {
         button.textContent = currentPage - 2;
         button.dataset.goToPage = currentPage - 2;
+        button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
       }
@@ -181,6 +193,7 @@ export function createPagination({ currentPage, totalPages }) {
       if (currentPage - 1 > 0) {
         button.textContent = currentPage - 1;
         button.dataset.goToPage = currentPage - 1;
+        button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
       }
@@ -197,6 +210,7 @@ export function createPagination({ currentPage, totalPages }) {
       if (currentPage + 1 <= totalPages) {
         button.textContent = currentPage + 1;
         button.dataset.goToPage = currentPage + 1;
+        button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
       }
@@ -206,6 +220,7 @@ export function createPagination({ currentPage, totalPages }) {
       if (currentPage + 2 <= totalPages) {
         button.textContent = currentPage + 2;
         button.dataset.goToPage = currentPage + 2;
+        button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
       }
@@ -216,6 +231,7 @@ export function createPagination({ currentPage, totalPages }) {
       if (totalPages > currentPage + 2) {
         button.textContent = totalPages;
         button.dataset.goToPage = totalPages;
+        button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
       }
@@ -228,6 +244,20 @@ export function createPagination({ currentPage, totalPages }) {
 
     if (Number(button.dataset.goToPage) === currentPage) {
       button.classList.add('active');
+    } else {
+      button.classList.remove('active');
     }
   }
+
+  if (source === 'trending') {
+    pagination.addEventListener('click', pageSelectorClickHandler);
+  } else if (source === 'searched') {
+    pagination.addEventListener('click', pageSelectorClickHandler);
+  }
+}
+
+export function pageSelectorClickHandler(e) {
+  const target = e.target;
+  if (target.classList.contains('pagination-button'))
+    getAndDisplayTrendingMovies(Number(target.dataset.goToPage));
 }

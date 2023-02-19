@@ -1,7 +1,7 @@
 import createMovieCard from './createCards';
 import loading from './loading';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { createPagination } from './pagination';
+import { createPagination, pageSelectorClickHandler } from './pagination';
 
 const API_KEY = '7bfaca5914dfe808eee9ce7ecac1ff40';
 
@@ -36,8 +36,11 @@ async function getMovieDetails(movieId) {
 
 export async function getAndDisplayTrendingMovies(page = 1) {
   loading();
+  const pagination = document.querySelector('.movies__pagination');
+
+  pagination.removeEventListener('click', pageSelectorClickHandler);
   try {
-    const trendingMovies = await getTrendingMovies(1);
+    const trendingMovies = await getTrendingMovies(page);
 
     const MAIN = document.querySelector('.movies__list');
 
@@ -52,7 +55,7 @@ export async function getAndDisplayTrendingMovies(page = 1) {
       totalPages: trendingMovies.total_pages,
     };
 
-    createPagination(paginationData);
+    createPagination(paginationData, 'trending');
   } catch (error) {
     console.log(error.message);
   }
