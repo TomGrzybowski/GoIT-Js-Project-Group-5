@@ -57,3 +57,19 @@ export async function getAndDisplayTrendingMovies(page = 1) {
 
   Loading.remove();
 }
+
+// export async function getMovieForModalFilm(filmId) {
+//   const movieDetailsForModal = await fetchToJson(
+//     `https://api.themoviedb.org/3/movie/${filmId}?api_key=${API_KEY}`
+//   );
+//   const { id, title, poster_path, genres, vote_average, vote_count, popularity, overview } =
+//     movieDetails;
+
+//   const image = `https://image.tmdb.org/t/p/w500/${poster_path}`;
+//   const rating = vote_average;
+//   const votes = vote_count;
+//   const about = overview;
+//   const genresString = genres.map(g => g.name).join(', ');
+
+//   return { id, title, image, genres: genresString, rating, votes, about };
+// }
