@@ -1,4 +1,4 @@
-<div class="main container">
+<main class="main container">
   <div class="movies">
     <ul class="movies__list">
       <li class="movie-card">
@@ -84,23 +84,5 @@
       </li>
     </ul>
   </div>
-  <div class="movies__pagination">
-    <button class="pagination-button" id="prev-button">
-      <svg class="main__svg" width="16" heigth="16">
-        <use href="./icons/icons.svg#arrow"></use>
-      </svg>
-    </button>
-
-    <button class="pagination-button pagination-button-1">1</button>
-    <button class="pagination-button" id="prev-dots">...</button>
-    <div class="pagination-numbers"></div>
-    <button class="pagination-button" id="next-dots">...</button>
-    <button class="pagination-button pagination-button-7"></button>
-
-    <button class="pagination-button" id="next-button">
-      <svg class="main__svg right" width="16" heigth="16">
-        <use href="./icons/icons.svg#arrow"></use>
-      </svg>
-    </button>
-  </div>
-</div>
+  <include src="./partials/pagination.html"></include>
+</main>
