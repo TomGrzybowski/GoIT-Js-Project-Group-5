@@ -146,8 +146,12 @@ export function createPagination({ currentPage, totalPages }) {
   checkAndRemoveArrows(currentPage, totalPages);
   checkAndRemoveDots(currentPage, totalPages);
 
-  for (let i = 1; i < buttons.length - 1; i++) {
+  for (let i = 0; i < buttons.length; i++) {
     const button = buttons[i];
+
+    if (i === 0) {
+      button.dataset.goToPage = currentPage - 1;
+    }
 
     if (i === 2 || i === 8) {
       continue;
@@ -214,6 +218,10 @@ export function createPagination({ currentPage, totalPages }) {
       } else {
         button.classList.add('hidden');
       }
+    }
+
+    if (i === 10) {
+      button.dataset.goToPage = currentPage + 1;
     }
 
     if (Number(button.dataset.goToPage) === currentPage) {
