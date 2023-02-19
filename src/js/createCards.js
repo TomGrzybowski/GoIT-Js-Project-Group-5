@@ -55,7 +55,5 @@ export default function createMovieCard(
   const moviesList = document.querySelector('.movies__list');
   moviesList.insertAdjacentElement('beforeend', listItem);
 
-  listItem.addEventListener('click', () => {
-    addModal(listItem);
-  });
+  addModal();
 }

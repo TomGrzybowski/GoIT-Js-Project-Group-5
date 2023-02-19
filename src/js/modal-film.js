@@ -1,43 +1,55 @@
 import { buttonsListeners } from './local-storage';
 
-export function addModal(listItem) {
-  openModal(listItem);
-  closeModal();
+export function addModal() {
+  document.querySelector('.movies__list').addEventListener('click', openModal);
+  // openModal();
+  // closeModal();
+
   // createFilmModal();
 }
+// const movieId = movie.dataset.movieId;
 
 const modal = document.querySelector('[data-modal]');
 const modalBox = document.querySelector('.modal-film');
 
-const openModal = listItem => {
+function openModal(event) {
+  let movie = event.target.parentNode;
+  movie = movie.parentNode;
+
+  const movieId = movie.dataset.movieId;
+  console.log(movieId);
+
   modal.classList.remove('is-hidden');
   modalBox.classList.add('is-visible');
-  buttonsListeners(listItem.dataset.movieId);
-};
+  document
+    .querySelector('.movies__list')
+    .removeEventListener('click', openModal);
+  // buttonsListeners(listItem.dataset.movieId);
+}
 
 const closeModal = () => {
-  document
-    .querySelector('.modal-film__close-btn')
-    .addEventListener('click', () => {
-      modal.classList.add('is-hidden');
-      modalBox.classList.remove('is-visible');
-    });
-
-  window.onclick = function (event) {
-    if (event.target === modal) {
-      modal.classList.add('is-hidden');
-      modalBox.classList.remove('is-visible');
-    }
-  };
-
-  const escapeClose = e => {
-    if (e.key === 'Escape') {
-      modal.classList.add('is-hidden');
-      modalBox.classList.remove('is-visible');
-    }
-  };
-  document.addEventListener('keyup', escapeClose);
+  modal.classList.add('is-hidden');
+  modalBox.classList.remove('is-visible');
+  addModal();
 };
+
+const closeBtn = document.querySelector('.modal-film__close-btn');
+closeBtn.addEventListener('click', function close() {
+  closeModal();
+});
+
+window.onclick = function (event) {
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+document.addEventListener('keyup', function escapeClose(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+    document.removeEventListener('keup', escapeClose);
+  }
+});
 
 //end of modal opening and closing
 
