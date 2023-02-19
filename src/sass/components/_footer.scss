@@ -14,7 +14,6 @@
         gap: 8px;
     }
     .footer__paragraph-primary {
-        color: var(--color-text-footer);
         margin: 0;
         margin-top: 28.79px;
         font-family: 'Roboto';
@@ -24,7 +23,6 @@
         line-height: 16px;
     }
     .footer__paragraph-secondary {
-        color: var(--color-text-footer);
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
@@ -41,6 +39,7 @@
         width: 100%;
         background-color: var(--color-grey-background);
         flex-direction: row;
+        color: var(--color-text-footer);
     }
     .footer__paragraph-primary {
         margin: 0;
@@ -64,8 +63,8 @@
     fill: var(--color-orange);
     padding: 0;
     margin: 0px 5px 0px 5px;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 13px;
 }
 .footer__team {
     color: var(--color-text-footer);

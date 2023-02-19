@@ -73,10 +73,11 @@ img {
     display: block;   
 }
 .team__image {
-    width: 160px;
+    max-width: 160px;
     height: 190px;
     padding-top: 15px;
     margin: 0 auto;
+    object-fit: cover;
 }
 .team__name,
 .team__job {
