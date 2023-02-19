@@ -150,6 +150,7 @@ export function createPagination({ currentPage, totalPages }) {
     const button = buttons[i];
 
     if (i === 0) {
+      //arrow left
       button.dataset.goToPage = currentPage - 1;
     }
 
@@ -221,6 +222,7 @@ export function createPagination({ currentPage, totalPages }) {
     }
 
     if (i === 10) {
+      //arrow right
       button.dataset.goToPage = currentPage + 1;
     }
 
