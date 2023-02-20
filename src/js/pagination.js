@@ -1,4 +1,6 @@
 import { getAndDisplayTrendingMovies } from './initial-fetch';
+import { getAndDisplayMovies } from './search-movies';
+// import { getAndDisplayMovies } from './search-movies';
 
 function checkAndRemoveArrows(currentPage, totalPages) {
   const leftArrow = document.querySelector('#prev-button');
@@ -25,7 +27,7 @@ function checkAndRemoveDots(currentPage, totalPages) {
   } else {
     leftDots.classList.remove('hidden');
   }
-  if (currentPage >= totalPages - 3 || totalPages < 7) {
+  if (currentPage >= totalPages - 3 || totalPages < 7 || totalPages <= 5) {
     rightDots.classList.add('hidden');
   } else {
     rightDots.classList.remove('hidden');
@@ -132,14 +134,20 @@ export function createPagination({ currentPage, totalPages }, source) {
     }
   }
 
-  if (source === 'trending') {
+  if (source === 'searched') {
     pagination.addEventListener('click', pageSelectorClickHandler);
-  } else if (source === 'searched') {
-    pagination.addEventListener('click', pageSelectorClickHandler);
+  } else if (source === 'trending') {
+    pagination.addEventListener('click', trendingPageSelectorClickHandler);
   }
 }
 
 export function pageSelectorClickHandler(e) {
+  const target = e.target;
+  if (target.classList.contains('pagination-button'))
+    getAndDisplayMovies(Number(target.dataset.goToPage));
+}
+
+export function trendingPageSelectorClickHandler(e) {
   const target = e.target;
   if (target.classList.contains('pagination-button'))
     getAndDisplayTrendingMovies(Number(target.dataset.goToPage));
