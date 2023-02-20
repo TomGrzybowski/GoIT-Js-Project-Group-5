@@ -13,22 +13,24 @@ function openModal(event) {
   movie = movie.parentNode;
 
   movieId = movie.dataset.movieId;
-  console.log(movieId);
-  createMovieModal(movieId);
+  if (movieId !== undefined) {
+    console.log(movieId);
+    createMovieModal(movieId);
 
-  modal.classList.remove('is-hidden');
-  modalFilm.classList.add('is-visible');
-  document
-    .querySelector('.movies__list')
-    .removeEventListener('click', openModal);
+    modal.classList.remove('is-hidden');
+    modalFilm.classList.add('is-visible');
+    document
+      .querySelector('.movies__list')
+      .removeEventListener('click', openModal);
 
-  // let filmId = e.target.closest('li').getAttribute('data-movie-id');
+    // let filmId = e.target.closest('li').getAttribute('data-movie-id');
 
-  getMovieDetails(movieId)
-    .then(data => {
-      createMovieModal(data);
-    })
-    .catch(error => console.log(error));
+    getMovieDetails(movieId)
+      .then(data => {
+        createMovieModal(data);
+      })
+      .catch(error => console.log(error));
+  }
 }
 
 //end of modal opening and closing
@@ -157,6 +159,7 @@ const closeModal = () => {
 function closeModalEvents(closeBtn) {
   closeBtn.addEventListener('click', function close() {
     closeModal();
+    closeBtn.removeEventListener('click', close);
   });
 
   window.onclick = function (event) {
@@ -168,6 +171,7 @@ function closeModalEvents(closeBtn) {
   document.addEventListener('keyup', function escapeClose(e) {
     if (e.key === 'Escape') {
       closeModal();
+      document.removeEventListener('keyup', escapeClose);
     }
   });
 }
