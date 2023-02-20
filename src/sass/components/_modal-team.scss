@@ -24,7 +24,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 280px;
-    height: 510px;
+    height: 80%;
     overflow: auto;
 }
 .team-backdrop__box {
@@ -136,7 +136,7 @@ img {
 @media (min-width: 768px) {
     .team-backdrop__container {
         width: 618px;
-        height: 562px;
+        height: 80%;
     }
     .team-backdrop__box {
         width: 580px;
@@ -155,7 +155,7 @@ img {
 @media (min-width: 1024px) {
     .team-backdrop__container {
         width: 882px;
-        height: 530px;
+        height: 80%;
     }
     .team-backdrop__box {
         width: 840px;
