@@ -3,5 +3,6 @@ import { getAndDisplayTrendingMovies } from './js/initial-fetch.js';
 import './js/search-movies.js';
 import './js/modal-film';
 import './js/modal-team';
+import './js/arrow-up';
 
 window.onload = getAndDisplayTrendingMovies(1);
