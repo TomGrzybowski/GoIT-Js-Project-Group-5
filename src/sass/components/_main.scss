@@ -10,10 +10,24 @@
     display: flex;
     position: relative;
     left: 4px;
+    pointer-events: none;
   }
 }
 .mobi-hidden {
   display: none;
+}
+
+.pagination-button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--color-grey-background);
+  cursor: pointer;
 }
 
 .movies {
@@ -95,7 +109,7 @@
     }
   }
   .mobi-hidden {
-    display: flex;
+    display: block;
   }
 
   .movie-card {
@@ -131,7 +145,7 @@
     }
   }
   .mobi-hidden {
-    display: flex;
+    display: block;
   }
 
   .movie-card {
@@ -155,17 +169,6 @@
 }
 
 .pagination-button {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  align-items: center;
-  border-radius: 5px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: var(--color-grey-background);
-  cursor: pointer;
-
   &:hover {
     background-color: var(--color-orange);
     color: var(--color-white);
