@@ -1,12 +1,13 @@
 import { buttonsListeners } from './local-storage';
+import {getMovieDetails} from './initial-fetch';
 
 export function addModal() {
   document.querySelector('.movies__list').addEventListener('click', openModal);
-  // createFilmModal();
+  createMovieModal();
 }
 
 const modal = document.querySelector('[data-modal]');
-const modalBox = document.querySelector('.modal-film');
+const modalFilm = document.querySelector('.modal-film');
 
 function openModal(event) {
   let movie = event.target.parentNode;
@@ -20,6 +21,14 @@ function openModal(event) {
   document
     .querySelector('.movies__list')
     .removeEventListener('click', openModal);
+  
+  let filmId = e.target.closest("li").getAttribute("data-movie-id");
+
+  getMovieDetails(filmId)
+    .then(data => {
+      createMovieModal(data);
+    })
+    .catch(error => console.log(error));
 }
 
 const closeModal = () => {
@@ -42,80 +51,97 @@ window.onclick = function (event) {
 document.addEventListener('keyup', function escapeClose(e) {
   if (e.key === 'Escape') {
     closeModal();
-    document.removeEventListener('keup', escapeClose);
+    document.removeEventListener('keyup', escapeClose);
   }
 });
 
 //end of modal opening and closing
 
-// poniżej produkują się ważne rzeczy
+function createMovieModal({
+  id, title, image, genres: genresString, rating, trueTitle, votes, popularity, overview
+}) {
+  const filmInfoModal = `<div class="modal-film__container" data-id=${id}>
+      <div class="modal-film__poster-box">
+        <img
+          class="modal-film__poster-img"
+          src="${image}"
+          alt="${title} poster"
+        />
+      </div>
+      <div class="modal-film__info-box">
+        <div class="modal-film__title">${title}</div>
+        <div class="modal-film__stats">
+          <table class="modal-film__table">
+            <tr>
+              <td class="modal-film__table-title">Vote / Votes</td>
+              <td class="modal-film__table-data">
+                <span class="modal-film__score">${rating}</span> /
+                <span class="modal-film__total-votes">${votes}</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="modal-film__table-title">Popularity</td>
+              <td class="modal-film__table-data">${popularity}</td>
+          </tr></td>
+            </tr>
+            <tr>
+              <td class="modal-film__table-title">Original Title</td>
+              <td class="modal-film__table-data">${trueTitle}</td>
+            </tr>
+            <tr>
+              <td class="modal-film__table-title">Genre</td>
+              <td class="modal-film__table-data">${genres}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-film__about">
+          <p class="modal-film__about-title">ABOUT</p>
+          <p class="modal-film__about-txt">${overview}</p>
+        </div>
+        <div class="modal-film__btn">
+          <button id="watched" class="modal-film__btn-watched" type="button">
+            ADD TO WATCHED
+          </button>
+          <button id="queue" class="modal-film__btn-queue" type="button">
+            ADD TO QUEUE
+          </button>
+        </div>
+      </div>
+    </div>`;
+  
+      if (image === "" || null) {
+        image = "https://via.placeholder.com/500x750.png?text=No+Image+Available";
+      } 
+      if (title === "") {
+        title = "No title available";
+      }
+      if (trueTitle === "") {
+        trueTitle = "Not available";
+      }
+      if (rating === "" || 0) {
+        rating = 'not available';
+      } 
+      if (votes === ""|| 0) {
+        votes = 'not available';
+      }
+      if (popularity === "" || 0) {
+        popularity = 'not available';
+      }
+      if (genres.length === 0) {
+        data.genres = 'not available';
+      } 
+      if (overview === "" || null) {
+        overview = 'Description not available';
+      }
 
-// function createFilmModal({
-//   poster_path,
-//   title,
-//   vote_avarage,
-//   vote_count,
-//   popularity,
-//   genres,
-//   overview,
-//   id,
-// }) {
-//   const filmInfoModal = `<div class="modal-film__container" data-id=${id}>
-//       <div class="modal-film__poster-box">
-//         <img
-//           class="modal-film__poster-img"
-//           src="${poster_path}"
-//           alt="${title}"
-//         />
-//       </div>
-//       <div class="modal-film__info-box">
-//         <div class="modal-film__title">${title}</div>
-//         <div class="modal-film__stats">
-//           <table class="modal-film__table">
-//             <tr>
-//               <td class="modal-film__table-title">Vote / Votes</td>
-//               <td class="modal-film__table-data">
-//                 <span class="modal-film__score">${vote_avarage}</span> /
-//                 <span class="modal-film__total-votes">${vote_count}</span>
-//               </td>
-//             </tr>
-//             <tr>
-//               <td class="modal-film__table-title">Popularity</td>
-//               <td class="modal-film__table-data">${popularity}</td>
-//           </tr></td>
-//             </tr>
-//             <tr>
-//               <td class="modal-film__table-title">Original Title</td>
-//               <td class="modal-film__table-data">${title}</td>
-//             </tr>
-//             <tr>
-//               <td class="modal-film__table-title">Genre</td>
-//               <td class="modal-film__table-data">${genres}</td>
-//             </tr>
-//           </table>
-//         </div>
-//         <div class="modal-film__about">
-//           <p class="modal-film__about-title">ABOUT</p>
-//           <p class="modal-film__about-txt">${overview}</p>
-//         </div>
-//         <div class="modal-film__btn">
-//           <button id="watched" class="modal-film__btn-watched" type="button">
-//             ADD TO WATCHED
-//           </button>
-//           <button id="queue" class="modal-film__btn-queue" type="button">
-//             ADD TO QUEUE
-//           </button>
-//         </div>
-//       </div>
-//     </div>`;
-//   addFilmInfoModal(filmInfoModal);
-// }
+  addFilmInfoModal(filmInfoModal);
+}
 
-// function addFilmInfoModal(markup) {
-//   removeFilmInfoModal();
-//   modalFilm.insertAdjacentHTML('beforeend', markup)
-// }
+function addFilmInfoModal(modalFilm) {
+  removeFilmInfoModal();
+  modalFilm.insertAdjacentHTML('beforeend', modalFilm)
+}
 
-// function removeFilmInfoModal() {
-//   modalFilm.innerHTML = "";
-// }
+function removeFilmInfoModal() {
+  modalFilm.innerHTML = "";
+}
