@@ -1,25 +1,19 @@
 const { Notify } = require('notiflix');
 
-const watchedBtn = document.querySelector('#watched');
-const queueBtn = document.querySelector('#queue');
-
-export function getMovieId(id) {
-  console.log(id);
-}
-
 const watchedLS = [];
 const queueLS = [];
 
-export const buttonsListeners = id => {
+export function buttonsListeners(watchedBtn, queueBtn, id) {
   watchedBtn.addEventListener('click', () => {
-    addtoWatched(id);
+    console.log('hello');
+    addtoWatched(watchedBtn, id);
   });
   queueBtn.addEventListener('click', () => {
-    addtoQueue(id);
+    addtoQueue(queueBtn, id);
   });
-};
+}
 
-const addtoWatched = id => {
+const addtoWatched = (watchedBtn, id) => {
   if (!watchedLS.includes(id)) {
     watchedLS.push(id);
     console.log(watchedLS);
@@ -40,7 +34,7 @@ const addtoWatched = id => {
   }
 };
 
-const addtoQueue = id => {
+const addtoQueue = (queueBtn, id) => {
   if (!queueLS.includes(id)) {
     queueLS.push(id);
     console.log(queueLS);

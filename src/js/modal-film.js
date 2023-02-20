@@ -1,4 +1,5 @@
 import { getMovieDetails } from './initial-fetch';
+import { buttonsListeners } from './local-storage';
 
 export function addModal() {
   document.querySelector('.movies__list').addEventListener('click', openModal);
@@ -6,14 +7,15 @@ export function addModal() {
 
 const modal = document.querySelector('[data-modal]');
 const modalFilm = document.querySelector('.modal-film');
-
+let movieId;
 function openModal(event) {
   let movie = event.target.parentNode;
   movie = movie.parentNode;
 
-  let movieId = movie.dataset.movieId;
+  movieId = movie.dataset.movieId;
   console.log(movieId);
   createMovieModal(movieId);
+
   modal.classList.remove('is-hidden');
   modalFilm.classList.add('is-visible');
   document
@@ -49,7 +51,6 @@ window.onclick = function (event) {
 document.addEventListener('keyup', function escapeClose(e) {
   if (e.key === 'Escape') {
     closeModal();
-    document.removeEventListener('keyup', escapeClose);
   }
 });
 
@@ -146,6 +147,9 @@ export default function createMovieModal({
 function addFilmInfoModal(filmInfoModal) {
   removeFilmInfoModal();
   modalFilm.insertAdjacentHTML('beforeend', filmInfoModal);
+  const watchedBtn = document.querySelector('#watched');
+  const queueBtn = document.querySelector('#queue');
+  buttonsListeners(watchedBtn, queueBtn, movieId);
 }
 
 function removeFilmInfoModal() {
