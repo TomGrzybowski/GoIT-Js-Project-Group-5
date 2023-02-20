@@ -1,4 +1,4 @@
-import { addModal } from './modal-film';
+import { addModal, createMovieModal } from './modal-film';
 
 export default function createMovieCard(
   { id, title, image, genres, year, rating },

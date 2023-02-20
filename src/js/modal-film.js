@@ -1,9 +1,7 @@
-import { buttonsListeners } from './local-storage';
-import {getMovieDetails} from './initial-fetch';
+import { getMovieDetails } from './initial-fetch';
 
 export function addModal() {
   document.querySelector('.movies__list').addEventListener('click', openModal);
-  createMovieModal();
 }
 
 const modal = document.querySelector('[data-modal]');
@@ -13,18 +11,18 @@ function openModal(event) {
   let movie = event.target.parentNode;
   movie = movie.parentNode;
 
-  const movieId = movie.dataset.movieId;
+  let movieId = movie.dataset.movieId;
   console.log(movieId);
-
+  createMovieModal(movieId);
   modal.classList.remove('is-hidden');
-  modalBox.classList.add('is-visible');
+  modalFilm.classList.add('is-visible');
   document
     .querySelector('.movies__list')
     .removeEventListener('click', openModal);
-  
-  let filmId = e.target.closest("li").getAttribute("data-movie-id");
 
-  getMovieDetails(filmId)
+  // let filmId = e.target.closest('li').getAttribute('data-movie-id');
+
+  getMovieDetails(movieId)
     .then(data => {
       createMovieModal(data);
     })
@@ -33,7 +31,7 @@ function openModal(event) {
 
 const closeModal = () => {
   modal.classList.add('is-hidden');
-  modalBox.classList.remove('is-visible');
+  modalFilm.classList.remove('is-visible');
   addModal();
 };
 
@@ -57,8 +55,16 @@ document.addEventListener('keyup', function escapeClose(e) {
 
 //end of modal opening and closing
 
-function createMovieModal({
-  id, title, image, genres: genresString, rating, trueTitle, votes, popularity, overview
+export default function createMovieModal({
+  id,
+  title,
+  image,
+  genres,
+  rating,
+  trueTitle,
+  votes,
+  popularity,
+  overview,
 }) {
   const filmInfoModal = `<div class="modal-film__container" data-id=${id}>
       <div class="modal-film__poster-box">
@@ -108,40 +114,40 @@ function createMovieModal({
         </div>
       </div>
     </div>`;
-  
-      if (image === "" || null) {
-        image = "https://via.placeholder.com/500x750.png?text=No+Image+Available";
-      } 
-      if (title === "") {
-        title = "No title available";
-      }
-      if (trueTitle === "") {
-        trueTitle = "Not available";
-      }
-      if (rating === "" || 0) {
-        rating = 'not available';
-      } 
-      if (votes === ""|| 0) {
-        votes = 'not available';
-      }
-      if (popularity === "" || 0) {
-        popularity = 'not available';
-      }
-      if (genres.length === 0) {
-        data.genres = 'not available';
-      } 
-      if (overview === "" || null) {
-        overview = 'Description not available';
-      }
+
+  if (image === '' || null) {
+    image = 'https://via.placeholder.com/500x750.png?text=No+Image+Available';
+  }
+  if (title === '') {
+    title = 'No title available';
+  }
+  if (trueTitle === '') {
+    trueTitle = 'Not available';
+  }
+  if (rating === '' || 0) {
+    rating = 'not available';
+  }
+  if (votes === '' || 0) {
+    votes = 'not available';
+  }
+  if (popularity === '' || 0) {
+    popularity = 'not available';
+  }
+  // if (genres.length === 0) {
+  //   data.genres = 'not available';
+  // }
+  if (overview === '' || null) {
+    overview = 'Description not available';
+  }
 
   addFilmInfoModal(filmInfoModal);
 }
 
-function addFilmInfoModal(modalFilm) {
+function addFilmInfoModal(filmInfoModal) {
   removeFilmInfoModal();
-  modalFilm.insertAdjacentHTML('beforeend', modalFilm)
+  modalFilm.insertAdjacentHTML('beforeend', filmInfoModal);
 }
 
 function removeFilmInfoModal() {
-  modalFilm.innerHTML = "";
+  modalFilm.innerHTML = '';
 }
