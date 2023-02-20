@@ -48,9 +48,9 @@ export function createMovieModal({
 }) {
   const filmInfoModal = `
      <button class="modal-film__close-btn" data-modal-close>
-      <svg class="modal-film__close-icon">
-        <use class="bug" href="./../icons/icons.svg#close" width="100" height="100"></use>
-      </svg>
+       <span>
+     <img class="modal-film__close-icon" src="https://icons.veryicon.com/png/o/application/spanner-app/close-30.png" />
+     </span>
     </button>
     <div class="modal-film__container" data-id=${id}>
       <div class="modal-film__poster-box">
