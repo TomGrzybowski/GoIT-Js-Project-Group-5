@@ -1,5 +1,5 @@
 import { getMovieDetails } from './initial-fetch';
-import { buttonsListeners } from './local-storage';
+import { buttonsListeners, isInWatched, isInQueue } from './local-storage';
 
 export function addModal() {
   document.querySelector('.movies__list').addEventListener('click', openModal);
@@ -31,32 +31,9 @@ function openModal(event) {
     .catch(error => console.log(error));
 }
 
-const closeModal = () => {
-  modal.classList.add('is-hidden');
-  modalFilm.classList.remove('is-visible');
-  addModal();
-};
-
-const closeBtn = document.querySelector('.modal-film__close-btn');
-closeBtn.addEventListener('click', function close() {
-  closeModal();
-});
-
-window.onclick = function (event) {
-  if (event.target === modal) {
-    closeModal();
-  }
-};
-
-document.addEventListener('keyup', function escapeClose(e) {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
-
 //end of modal opening and closing
 
-export default function createMovieModal({
+export function createMovieModal({
   id,
   title,
   image,
@@ -64,10 +41,16 @@ export default function createMovieModal({
   rating,
   trueTitle,
   votes,
-  popularity,
+  popularityFixed,
   overview,
 }) {
-  const filmInfoModal = `<div class="modal-film__container" data-id=${id}>
+  const filmInfoModal = `
+     <button class="modal-film__close-btn" data-modal-close>
+      <svg class="modal-film__close-icon">
+        <use class="bug" href="./../icons/icons.svg#close" width="100" height="100"></use>
+      </svg>
+    </button>
+    <div class="modal-film__container" data-id=${id}>
       <div class="modal-film__poster-box">
         <img
           class="modal-film__poster-img"
@@ -88,7 +71,7 @@ export default function createMovieModal({
             </tr>
             <tr>
               <td class="modal-film__table-title">Popularity</td>
-              <td class="modal-film__table-data">${popularity}</td>
+              <td class="modal-film__table-data">${popularityFixed}</td>
           </tr></td>
             </tr>
             <tr>
@@ -128,15 +111,16 @@ export default function createMovieModal({
   if (rating === '' || 0) {
     rating = 'not available';
   }
+
   if (votes === '' || 0) {
     votes = 'not available';
   }
-  if (popularity === '' || 0) {
+  if (popularityFixed === '' || 0) {
     popularity = 'not available';
   }
-  // if (genres.length === 0) {
-  //   data.genres = 'not available';
-  // }
+  if (genres === 0) {
+    genres = 'not available';
+  }
   if (overview === '' || null) {
     overview = 'Description not available';
   }
@@ -149,9 +133,41 @@ function addFilmInfoModal(filmInfoModal) {
   modalFilm.insertAdjacentHTML('beforeend', filmInfoModal);
   const watchedBtn = document.querySelector('#watched');
   const queueBtn = document.querySelector('#queue');
+  if (isInWatched(movieId)) {
+    watchedBtn.textContent = 'REMOVE FROM WATCHED';
+  }
+  if (isInQueue(movieId)) {
+    queueBtn.textContent = 'REMOVE FROM QUEUE';
+  }
   buttonsListeners(watchedBtn, queueBtn, movieId);
+  const closeBtn = document.querySelector('.modal-film__close-btn');
+  closeModalEvents(closeBtn);
 }
 
 function removeFilmInfoModal() {
   modalFilm.innerHTML = '';
+}
+
+const closeModal = () => {
+  modal.classList.add('is-hidden');
+  modalFilm.classList.remove('is-visible');
+  addModal();
+};
+
+function closeModalEvents(closeBtn) {
+  closeBtn.addEventListener('click', function close() {
+    closeModal();
+  });
+
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+
+  document.addEventListener('keyup', function escapeClose(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
 }
