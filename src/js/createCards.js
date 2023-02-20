@@ -1,4 +1,4 @@
-import { addModal } from './modal-film';
+import { addModal, createMovieModal } from './modal-film';
 
 export default function createMovieCard(
   { id, title, image, genres, year, rating },
@@ -54,5 +54,6 @@ export default function createMovieCard(
 
   const moviesList = document.querySelector('.movies__list');
   moviesList.insertAdjacentElement('beforeend', listItem);
-  addModal(listItem);
+
+  addModal();
 }
