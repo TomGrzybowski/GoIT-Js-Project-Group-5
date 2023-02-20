@@ -811,8 +811,8 @@ ul {
   background-color: var(--color-white);
 }
 .modal-film__close-icon {
-  width: 32px;
-  height: 32px;
+  width: 14px;
+  height: 14px;
   stroke: black;
   fill: black;
   position: absolute;
@@ -862,14 +862,14 @@ ul {
 }
 .modal-film__score {
   background-color: var(--color-modal-film);
-  padding: 0 8px;
+  padding: 1px 8px;
   display: inline-block;
   border-radius: 5px;
   color: var(--color-white);
 }
 .modal-film__total-votes {
   background-color: var(--color-grey-background);
-  padding: 0 4px;
+  padding: 1px 4px;
   display: inline-block;
   border-radius: 5px;
 }
@@ -1031,6 +1031,14 @@ ul {
     width: 136px;
   }
 }
+.bug {
+  width: 100px;
+  height: 100px;
+  fill: black;
+  stroke: black;
+  display: block;
+}
+
 /*
  * Główny plik dla styli.
  * Wszystkie components i variables podłączamy tutaj.
