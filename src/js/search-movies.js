@@ -2,7 +2,11 @@ import createMovieCard from './createCards';
 import { getMovieDetails } from './initial-fetch';
 import loading from './loading';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { createPagination, pageSelectorClickHandler } from './pagination';
+import {
+  createPagination,
+  pageSelectorClickHandler,
+  trendingPageSelectorClickHandler,
+} from './pagination';
 
 const alert = document.querySelector('.header__info');
 
@@ -38,6 +42,8 @@ export async function getAndDisplayMovies(page = 1) {
   const pagination = document.querySelector('.movies__pagination');
 
   pagination.removeEventListener('click', pageSelectorClickHandler);
+  pagination.removeEventListener('click', trendingPageSelectorClickHandler);
+
   try {
     const movies = await searchMovies(keyword, page);
 

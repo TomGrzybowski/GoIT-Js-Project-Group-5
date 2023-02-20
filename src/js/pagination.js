@@ -1,6 +1,5 @@
 import { getAndDisplayTrendingMovies } from './initial-fetch';
 import { getAndDisplayMovies } from './search-movies';
-// import { getAndDisplayMovies } from './search-movies';
 
 function checkAndRemoveArrows(currentPage, totalPages) {
   const leftArrow = document.querySelector('#prev-button');

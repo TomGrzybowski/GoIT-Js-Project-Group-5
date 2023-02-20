@@ -41,6 +41,7 @@ export async function getAndDisplayTrendingMovies(page = 1) {
   loading();
   const pagination = document.querySelector('.movies__pagination');
 
+  pagination.removeEventListener('click', pageSelectorClickHandler);
   pagination.removeEventListener('click', trendingPageSelectorClickHandler);
 
   try {
