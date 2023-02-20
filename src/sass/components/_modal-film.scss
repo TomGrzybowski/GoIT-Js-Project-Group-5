@@ -205,7 +205,7 @@
     flex-direction: row;
     gap: 32px;
   }
-  
+
   .modal-film__poster-box {
     padding-top: 0px;
     width: 264px;
@@ -218,18 +218,21 @@
     margin: 0;
     width: 264px;
   }
-  
+
   .modal-film__title {
     padding-top: 0;
   }
   .modal-film__btn {
+    text-transform: uppercase;
     padding-top: 20px;
   }
   .modal-film__btn-watched {
+    text-transform: uppercase;
     padding: 0;
     width: 125px;
   }
   .modal-film__btn-queue {
+    text-transform: uppercase;
     width: 125px;
   }
 }

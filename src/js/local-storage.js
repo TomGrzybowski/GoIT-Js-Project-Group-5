@@ -18,18 +18,18 @@ const addtoWatched = (watchedBtn, id) => {
     watchedLS.push(id);
     console.log(watchedLS);
     window.localStorage.setItem('watched', JSON.stringify(watchedLS));
-    watchedBtn.textContent = 'Added to watched';
+    watchedBtn.textContent = 'ADDED TO WATCHED';
     setTimeout(() => {
-      watchedBtn.textContent = 'remove from watched';
+      watchedBtn.textContent = 'REMOVE FROM WATCHED';
     }, 1000);
-    Notify.success('Added to watched');
+    Notify.success('ADDED TO WATCHED');
   } else {
     watchedLS.splice(watchedLS.indexOf(id), 1);
     window.localStorage.setItem('watched', JSON.stringify(watchedLS));
-    watchedBtn.textContent = 'removed from watched';
-    Notify.success('Removed from watched');
+    watchedBtn.textContent = 'REMOVED FROM WATCHED';
+    Notify.success('REMOVED FROM WATCHED');
     setTimeout(() => {
-      watchedBtn.textContent = 'add to queue';
+      watchedBtn.textContent = 'ADD TO WATCHED';
     }, 1000);
   }
 };
@@ -39,18 +39,18 @@ const addtoQueue = (queueBtn, id) => {
     queueLS.push(id);
     console.log(queueLS);
     window.localStorage.setItem('queue', JSON.stringify(queueLS));
-    queueBtn.textContent = 'Added to queue';
+    queueBtn.textContent = 'ADDED TO QUEUE';
     setTimeout(() => {
-      queueBtn.textContent = 'remove from queue';
+      queueBtn.textContent = 'REMOVE FROM QUEUE';
     }, 1000);
-    Notify.success('Added to queue');
+    Notify.success('ADDED TO QUEUE');
   } else {
     queueLS.splice(queueLS.indexOf(id), 1);
     window.localStorage.setItem('queue', JSON.stringify(queueLS));
-    queueBtn.textContent = 'removed from queue';
-    Notify.success('Removed from queue');
+    queueBtn.textContent = 'REMOVED FROM QUEUE';
+    Notify.success('REMOVED FROM QUEUE');
     setTimeout(() => {
-      queueBtn.textContent = 'add to queue';
+      queueBtn.textContent = 'ADD TO QUEUE';
     }, 1000);
   }
 };
