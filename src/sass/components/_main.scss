@@ -12,6 +12,9 @@
     left: 4px;
   }
 }
+.mobi-hidden {
+  display: none;
+}
 
 .movies {
   padding: 20px 20px 40px;
@@ -91,6 +94,9 @@
       margin: 0 auto 60px;
     }
   }
+  .mobi-hidden {
+    display: flex;
+  }
 
   .movie-card {
     width: 294px;
@@ -123,6 +129,9 @@
     &__pagination {
       margin: 0 auto 60px;
     }
+  }
+  .mobi-hidden {
+    display: flex;
   }
 
   .movie-card {
