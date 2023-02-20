@@ -10,15 +10,15 @@ export function buttonsListeners(watchedBtn, queueBtn, id) {
 }
 
 export const isInWatched = id => {
-  const watched = [] || JSON.parse(localStorage.getItem('watched'));
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
   return watched.includes(id);
 };
 export const isInQueue = id => {
-  const queue = [] || JSON.parse(localStorage.getItem('queue'));
+  const queue = JSON.parse(localStorage.getItem('queue')) || [];
   return queue.includes(id);
 };
 const addtoWatched = (watchedBtn, id) => {
-  const watched = [] || JSON.parse(localStorage.getItem('watched'));
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
   if (!isInWatched(id)) {
     watched.push(id);
     localStorage.setItem('watched', JSON.stringify(watched));
