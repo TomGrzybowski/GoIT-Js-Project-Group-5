@@ -301,7 +301,8 @@
   width: 130px;
 }
 .button-library:hover,
-.button-library:focus {
+.button-library:focus,
+.button-library__initial {
   background-color: var(--color-button);
   color: var(--color-white);
   border: 2px solid var(--color-button);
