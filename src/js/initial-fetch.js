@@ -42,9 +42,10 @@ export async function getMovieDetails(movieId) {
   const trueTitle = original_title;
   const image = `https://image.tmdb.org/t/p/w500/${poster_path}`;
   const year = release_date.substring(0, 4);
-  const rating = vote_average;
+  const rating = parseFloat(vote_average.toFixed(1));
   const votes = vote_count;
   const genresString = genres.map(g => g.name).join(', ');
+  const popularityFixed = parseFloat(popularity.toFixed(1));
 
   return {
     id,
@@ -55,7 +56,7 @@ export async function getMovieDetails(movieId) {
     rating,
     trueTitle,
     votes,
-    popularity,
+    popularityFixed,
     overview,
   };
 }
