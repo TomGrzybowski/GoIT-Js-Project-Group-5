@@ -159,7 +159,6 @@ export function trendingPageSelectorClickHandler(e) {
 export function watchedPageSelectorClickHandler(e) {
   const watchedBtn = document.querySelector('.active');
   const target = e.target;
-  console.log(watchedBtn, 'ssdsd');
   if (target.classList.contains('pagination-button')) {
     populateSection(watchedBtn, Number(target.dataset.goToPage));
   }

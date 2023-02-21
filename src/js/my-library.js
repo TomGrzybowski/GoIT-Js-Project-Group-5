@@ -76,7 +76,6 @@ function initListeners() {
       if (!isActiveButton) {
         markActiveButton(e.target);
         populateSection(e.target);
-        console.log(e.target);
       }
     })
   );
@@ -90,11 +89,10 @@ export function populateSection(target, page = 1) {
   sectionContainer.classList.add(HIDDEN_SECTION_CLASS);
   const timeout = setTimeout(() => {
     sectionContainer.innerHTML = null;
-    console.log(target);
+
     const selectedSectionId = target.getAttribute('id') ?? WATCHED_SECTION_ID;
 
     const elements = JSON.parse(readSectionFromLocalStorage(selectedSectionId));
-    console.log(elements.length);
 
     const moviesPerPage = 9;
 
@@ -125,22 +123,6 @@ export function populateSection(target, page = 1) {
     clearTimeout(timeout);
   }, 300);
 }
-
-// export function libraryPage(page) {
-//   let activeButton = document.querySelector('active');
-
-//   populateSection(activeButton);
-// }
-
-// //Renderowane gdy nie ma nic dodanego do "watched"/"queued"
-// function renderEmptyState() {
-//   sectionContainer.innerHTML = `
-//   <div>
-//   <p><strong>Please add elements to the list </strong></p>
-//   </div>
-//   `;
-//   sectionContainer.classList.remove(HIDDEN_SECTION_CLASS);
-// }
 
 //"Czyste" odczytywanie z local-storage
 function readElementsFromLocalStorage(key) {
