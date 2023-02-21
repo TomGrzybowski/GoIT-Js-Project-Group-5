@@ -1,5 +1,11 @@
+// import { addModal } from './modal-film.js';
+// import createMovieModal from './modal-film.js';
 import { addModal } from './modal-film.js';
-import createMovieModal from './modal-film.js';
+import {
+  createPagination,
+  watchedPageSelectorClickHandler,
+} from './pagination.js';
+
 const ACTIVE_SECTION_CLASS = 'active';
 const HIDDEN_SECTION_CLASS = 'hidden';
 const WATCHED_SECTION_ID = '#watched-btn';
@@ -77,32 +83,47 @@ function initListeners() {
 }
 
 //Wypełnienie sekcji danymi pobranymi z local-storage w zależności czy kliknięto button "watched" czy "queued"
-function populateSection(target) {
+export function populateSection(target, page = 1) {
+  const pagination = document.querySelector('.movies__pagination');
+  pagination.removeEventListener('click', watchedPageSelectorClickHandler);
+
   sectionContainer.classList.add(HIDDEN_SECTION_CLASS);
   const timeout = setTimeout(() => {
     sectionContainer.innerHTML = null;
+
     const selectedSectionId = target.getAttribute('id') ?? WATCHED_SECTION_ID;
-    console.log(selectedSectionId);
+
     const elements = JSON.parse(readSectionFromLocalStorage(selectedSectionId));
-    console.log(elements);
+
+    const moviesPerPage = 9;
+
+    const paginationData = {
+      currentPage: page,
+      totalPages: Math.ceil(elements.length / moviesPerPage),
+    };
+
+    createPagination(paginationData, 'watched');
+
     if (elements.length > 0) {
+      firstMovie = 0 + moviesPerPage * (paginationData.currentPage - 1);
+      lastMovie =
+        moviesPerPage + moviesPerPage * (paginationData.currentPage - 1);
+
       getMovieDetails(elements);
-      elements.forEach(movieID => renderMovieElement(movieID));
+
+      for (let i = firstMovie; i < lastMovie; i++) {
+        if (!elements[i]) {
+          continue;
+        }
+        renderMovieElement(elements[i]);
+      }
+
+      // elements.forEach(movieID => renderMovieElement(movieID));
     }
     sectionContainer.classList.remove(HIDDEN_SECTION_CLASS);
     clearTimeout(timeout);
   }, 300);
 }
-
-// //Renderowane gdy nie ma nic dodanego do "watched"/"queued"
-// function renderEmptyState() {
-//   sectionContainer.innerHTML = `
-//   <div>
-//   <p><strong>Please add elements to the list </strong></p>
-//   </div>
-//   `;
-//   sectionContainer.classList.remove(HIDDEN_SECTION_CLASS);
-// }
 
 //"Czyste" odczytywanie z local-storage
 function readElementsFromLocalStorage(key) {
@@ -175,6 +196,8 @@ async function renderMovieElement(movieID) {
 
   const moviesList = document.querySelector('.movies__list');
   moviesList.insertAdjacentElement('beforeend', listItem);
+
+  addModal();
 }
 
 function initScripts() {

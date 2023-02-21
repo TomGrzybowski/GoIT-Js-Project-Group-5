@@ -1,4 +1,41 @@
-.main{
+.main {
+  display: flex;
+  flex-direction: column;
+
+  &__svg {
+    stroke: var(--color-black);
+    fill: var(--color-black);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    position: relative;
+    left: 4px;
+    pointer-events: none;
+  }
+}
+.mobi-hidden {
+  display: none;
+}
+
+#next-dots,
+#prev-dots {
+  pointer-events: none;
+}
+
+.pagination-button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--color-grey-background);
+  cursor: pointer;
+}
+
+.main {
   padding-bottom: 100px;
 }
 .movies {
@@ -7,6 +44,12 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &__pagination {
+    margin: 0 auto 40px;
+    display: flex;
+    gap: 5px;
   }
 }
 
@@ -25,7 +68,6 @@
   }
 
   &__details {
-    // height: 41px;
     font-weight: 500;
     padding-top: 10px;
   }
@@ -63,7 +105,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .main{
+  .main {
     padding-bottom: 77px;
   }
   .movies {
@@ -72,6 +114,13 @@
     &__list {
       gap: 30px;
     }
+
+    &__pagination {
+      margin: 0 auto 60px;
+    }
+  }
+  .mobi-hidden {
+    display: block;
   }
 
   .movie-card {
@@ -101,6 +150,13 @@
     &__list {
       gap: 30px;
     }
+
+    &__pagination {
+      margin: 0 auto 60px;
+    }
+  }
+  .mobi-hidden {
+    display: block;
   }
 
   .movie-card {
@@ -121,4 +177,20 @@
     width: 274px;
     height: 398px;
   }
+}
+
+.pagination-button {
+  &:hover {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+  }
+}
+
+.right {
+  transform: rotate(180deg);
+}
+
+.active {
+  background-color: var(--color-orange);
+  color: var(--color-white);
 }
