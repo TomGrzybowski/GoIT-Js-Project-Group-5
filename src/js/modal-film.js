@@ -49,7 +49,7 @@ export function createMovieModal({
   const filmInfoModal = `
      <button class="modal-film__close-btn" data-modal-close>
       <svg class="modal-film__close-icon">
-            <use href="/icons.cd4ebd1a.svg#close"></use>
+            <use href="/GoIT-Js-Project-Group-5/icons.17aad3cb.svg#close"></use>
           </svg>
     </button>
     <div class="modal-film__container" data-id=${id}>
