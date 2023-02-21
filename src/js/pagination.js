@@ -160,5 +160,5 @@ export function watchedPageSelectorClickHandler(e) {
   const target = e.target;
 
   if (target.classList.contains('pagination-button'))
-    libraryPage(Number(target.dataset.goToPage));
+    populateSection(Number(target.dataset.goToPage));
 }

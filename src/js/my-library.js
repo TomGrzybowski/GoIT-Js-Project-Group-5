@@ -94,7 +94,7 @@ export function populateSection(target, page = 1) {
     const elements = JSON.parse(readSectionFromLocalStorage(selectedSectionId));
     console.log(elements.length);
 
-    const moviesPerPage = 2;
+    const moviesPerPage = 6;
 
     const paginationData = {
       currentPage: page,
@@ -109,22 +109,23 @@ export function populateSection(target, page = 1) {
         moviesPerPage + moviesPerPage * (paginationData.currentPage - 1);
 
       getMovieDetails(elements);
+
       for (let i = firstMovie; i < lastMovie; i++) {
         renderMovieElement(elements[i]);
       }
 
-      // elements.forEach(movieID => renderMovieElement(movieID));
+      elements.forEach(movieID => renderMovieElement(movieID));
     }
     sectionContainer.classList.remove(HIDDEN_SECTION_CLASS);
     clearTimeout(timeout);
   }, 300);
 }
 
-export function libraryPage(page) {
-  let activeButton = document.querySelector('active');
+// export function libraryPage(page) {
+//   let activeButton = document.querySelector('active');
 
-  populateSection(activeButton, page);
-}
+//   populateSection(activeButton);
+// }
 
 // //Renderowane gdy nie ma nic dodanego do "watched"/"queued"
 // function renderEmptyState() {

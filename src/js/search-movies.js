@@ -30,12 +30,13 @@ const input = document.querySelector('#search-box');
 
 let keyword;
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  keyword = input.value;
-  getAndDisplayMovies();
-});
-
+if (input) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    keyword = input.value;
+    getAndDisplayMovies();
+  });
+}
 export async function getAndDisplayMovies(page = 1) {
   alert.classList.add('hidden');
   loading();
