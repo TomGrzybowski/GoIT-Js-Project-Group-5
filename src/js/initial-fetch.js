@@ -71,9 +71,6 @@ export async function getAndDisplayTrendingMovies(page = 1) {
       currentPage: trendingMovies.page,
       amountOfPages: trendingMovies.total_pages,
     };
-
-    console.log(paginationData);
-    // Kuba, tutaj wpisz funkcję createPagination({currentPage, amountOfPages})
   } catch (error) {
     console.log(error.message);
   }
