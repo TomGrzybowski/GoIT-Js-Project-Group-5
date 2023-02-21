@@ -28,16 +28,6 @@ const addtoWatched = (watchedBtn, id) => {
     watched.push(id);
     localStorage.setItem('watched', JSON.stringify(watched));
 
-export const addtoWatched = (watchedBtn, id) => {
-  const pagination = document.querySelector('.movies__pagination');
-
-  pagination.removeEventListener('click', pageSelectorClickHandler);
-  pagination.removeEventListener('click', trendingPageSelectorClickHandler);
-
-  if (!watchedLS.includes(id)) {
-    watchedLS.push(id);
-
-    window.localStorage.setItem('watched', JSON.stringify(watchedLS));
     watchedBtn.textContent = 'ADDED TO WATCHED';
     setTimeout(() => {
       watchedBtn.textContent = 'REMOVE FROM WATCHED';
@@ -56,7 +46,7 @@ export const addtoWatched = (watchedBtn, id) => {
 };
 
 const addtoQueue = (queueBtn, id) => {
-  const queue =  JSON.parse(localStorage.getItem('queue')) || [];
+  const queue = JSON.parse(localStorage.getItem('queue')) || [];
   if (!isInQueue(id)) {
     queue.push(id);
 
