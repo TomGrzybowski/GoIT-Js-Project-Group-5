@@ -1,5 +1,6 @@
 // import { addModal } from './modal-film.js';
 // import createMovieModal from './modal-film.js';
+import { addModal } from './modal-film.js';
 import {
   createPagination,
   watchedPageSelectorClickHandler,
@@ -195,6 +196,8 @@ async function renderMovieElement(movieID) {
 
   const moviesList = document.querySelector('.movies__list');
   moviesList.insertAdjacentElement('beforeend', listItem);
+
+  addModal();
 }
 
 function initScripts() {
