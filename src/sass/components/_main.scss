@@ -31,10 +31,6 @@
     padding-top: 10px;
   }
 }
-// .movie-card :hover {
-
-//   // overflow: hidden;
-// }
 
 .image {
   width: 280px;
@@ -43,8 +39,8 @@
   border-radius: 5px;
 }
 .movie-card:hover{
- border-radius: 5px;
-  box-shadow: -1px -1px 26px 0px black;
+//  border-radius: 5px;
+  // box-shadow: -1px -1px 26px 0px black;
   scale: 1.009;
   transition: 0.4s;
 }
