@@ -105,8 +105,8 @@ export function populateSection(target, page = 1) {
     createPagination(paginationData, 'watched');
 
     if (elements.length > 0) {
-      firstMovie = 0 + moviesPerPage * (paginationData.currentPage - 1);
-      lastMovie =
+      const firstMovie = 0 + moviesPerPage * (paginationData.currentPage - 1);
+      const lastMovie =
         moviesPerPage + moviesPerPage * (paginationData.currentPage - 1);
 
       getMovieDetails(elements);
