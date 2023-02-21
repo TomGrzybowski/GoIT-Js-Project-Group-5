@@ -1,12 +1,4 @@
-import {
-  pageSelectorClickHandler,
-  trendingPageSelectorClickHandler,
-} from './pagination';
-
 const { Notify } = require('notiflix');
-
-const watchedLS = [];
-const queueLS = [];
 
 export function buttonsListeners(watchedBtn, queueBtn, id) {
   watchedBtn.addEventListener('click', () => {
@@ -17,19 +9,29 @@ export function buttonsListeners(watchedBtn, queueBtn, id) {
   });
 }
 
-export const addtoWatched = (watchedBtn, id) => {
-  if (!watchedLS.includes(id)) {
-    watchedLS.push(id);
+export const isInWatched = id => {
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
+  return watched.includes(id);
+};
+export const isInQueue = id => {
+  const queue = JSON.parse(localStorage.getItem('queue')) || [];
+  return queue.includes(id);
+};
+const addtoWatched = (watchedBtn, id) => {
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
+  if (!isInWatched(id)) {
+    watched.push(id);
+    localStorage.setItem('watched', JSON.stringify(watched));
 
-    window.localStorage.setItem('watched', JSON.stringify(watchedLS));
     watchedBtn.textContent = 'ADDED TO WATCHED';
     setTimeout(() => {
       watchedBtn.textContent = 'REMOVE FROM WATCHED';
     }, 1000);
     Notify.success('ADDED TO WATCHED');
   } else {
-    watchedLS.splice(watchedLS.indexOf(id), 1);
-    window.localStorage.setItem('watched', JSON.stringify(watchedLS));
+    watched.splice(watched.indexOf(id), 1);
+    localStorage.setItem('watched', JSON.stringify(watched));
+
     watchedBtn.textContent = 'REMOVED FROM WATCHED';
     Notify.success('REMOVED FROM WATCHED');
     setTimeout(() => {
@@ -39,18 +41,20 @@ export const addtoWatched = (watchedBtn, id) => {
 };
 
 const addtoQueue = (queueBtn, id) => {
-  if (!queueLS.includes(id)) {
-    queueLS.push(id);
-    console.log(queueLS);
-    window.localStorage.setItem('queue', JSON.stringify(queueLS));
+  const queue = JSON.parse(localStorage.getItem('queue')) || [];
+  if (!isInQueue(id)) {
+    queue.push(id);
+
+    localStorage.setItem('queue', JSON.stringify(queue));
+
     queueBtn.textContent = 'ADDED TO QUEUE';
     setTimeout(() => {
       queueBtn.textContent = 'REMOVE FROM QUEUE';
     }, 1000);
     Notify.success('ADDED TO QUEUE');
   } else {
-    queueLS.splice(queueLS.indexOf(id), 1);
-    window.localStorage.setItem('queue', JSON.stringify(queueLS));
+    queue.splice(queue.indexOf(id), 1);
+    localStorage.setItem('queue', JSON.stringify(queue));
     queueBtn.textContent = 'REMOVED FROM QUEUE';
     Notify.success('REMOVED FROM QUEUE');
     setTimeout(() => {
