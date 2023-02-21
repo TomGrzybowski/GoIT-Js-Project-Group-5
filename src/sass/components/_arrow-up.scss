@@ -1,0 +1,65 @@
+.arrow__button{
+    position: fixed;
+    right: 5%;
+    top: 80%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px gray;
+
+    background-color:var(--color-grey-background);
+    width: 45px;
+    height: 45px;
+    transform: rotate(0) scale(1);
+    transition: opacity 0.5s, transform 0.5s;
+    opacity: 0;
+}
+.arrow__svg {
+    fill: var(--color-orange);
+    position: absolute;
+    top: 7px;
+    left: 7.5px;
+    width: 29px;
+    height: 29px;
+}
+
+.arrow__button:hover {
+    background-color: #333;
+  }
+  
+  .arrow__button.animated {
+    animation-name: rotateAndScale;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  .arrow__button.fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes rotateAndScale {
+    0% {
+      transform: rotate(0) scale(0.7);
+      opacity: 0;
+    }
+    50% {
+      transform: rotate(180deg) scale(1.3);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
