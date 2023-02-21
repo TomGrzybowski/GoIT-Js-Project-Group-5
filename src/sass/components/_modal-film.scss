@@ -26,10 +26,12 @@
 }
 
 .modal-film {
-  position: fixed;
+  position: absolute;
   display: flex;
   background-color: var(--color-white);
   width: 280px;
+  height: 98vh;
+  overflow-y: scroll;
   padding: 20px;
   font-weight: 500;
   padding-top: 18px;
@@ -194,6 +196,8 @@
 
 @media screen and (min-width: 658px) and (max-width: 1024px) {
   .modal-film {
+    height: auto;
+    overflow-y: hidden;
     padding: 28px;
     width: 618px;
     flex-direction: column;
@@ -238,6 +242,8 @@
 }
 @media screen and (min-width: 1024px) {
   .modal-film {
+    height: auto;
+    overflow-y: hidden;
     padding: 30px;
     width: 882px;
     flex-direction: column;
