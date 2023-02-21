@@ -1,3 +1,8 @@
+import {
+  pageSelectorClickHandler,
+  trendingPageSelectorClickHandler,
+} from './pagination';
+
 const { Notify } = require('notiflix');
 
 const watchedLS = [];
@@ -5,7 +10,6 @@ const queueLS = [];
 
 export function buttonsListeners(watchedBtn, queueBtn, id) {
   watchedBtn.addEventListener('click', () => {
-    console.log('hello');
     addtoWatched(watchedBtn, id);
   });
   queueBtn.addEventListener('click', () => {
@@ -13,10 +17,15 @@ export function buttonsListeners(watchedBtn, queueBtn, id) {
   });
 }
 
-const addtoWatched = (watchedBtn, id) => {
+export const addtoWatched = (watchedBtn, id) => {
+  const pagination = document.querySelector('.movies__pagination');
+
+  pagination.removeEventListener('click', pageSelectorClickHandler);
+  pagination.removeEventListener('click', trendingPageSelectorClickHandler);
+
   if (!watchedLS.includes(id)) {
     watchedLS.push(id);
-    console.log(watchedLS);
+
     window.localStorage.setItem('watched', JSON.stringify(watchedLS));
     watchedBtn.textContent = 'ADDED TO WATCHED';
     setTimeout(() => {

@@ -1,4 +1,6 @@
 import { getAndDisplayTrendingMovies } from './initial-fetch';
+import { addtoWatched } from './local-storage';
+import { libraryPage, populateSection } from './my-library';
 import { getAndDisplayMovies } from './search-movies';
 
 function checkAndRemoveArrows(currentPage, totalPages) {
@@ -137,6 +139,8 @@ export function createPagination({ currentPage, totalPages }, source) {
     pagination.addEventListener('click', pageSelectorClickHandler);
   } else if (source === 'trending') {
     pagination.addEventListener('click', trendingPageSelectorClickHandler);
+  } else if (source === 'watched') {
+    pagination.addEventListener('click', watchedPageSelectorClickHandler);
   }
 }
 
@@ -150,4 +154,11 @@ export function trendingPageSelectorClickHandler(e) {
   const target = e.target;
   if (target.classList.contains('pagination-button'))
     getAndDisplayTrendingMovies(Number(target.dataset.goToPage));
+}
+
+export function watchedPageSelectorClickHandler(e) {
+  const target = e.target;
+
+  if (target.classList.contains('pagination-button'))
+    libraryPage(Number(target.dataset.goToPage));
 }
