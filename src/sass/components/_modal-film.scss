@@ -29,6 +29,7 @@
   position: fixed;
   display: flex;
   background-color: var(--color-white);
+  border-radius: 5px;
   width: 280px;
   padding: 20px;
   font-weight: 500;
@@ -110,14 +111,14 @@
   }
   &__score {
     background-color: var(--color-modal-film);
-    padding: 0 8px;
+    padding: 1px 8px;
     display: inline-block;
     border-radius: 5px;
     color: var(--color-white);
   }
   &__total-votes {
     background-color: var(--color-grey-background);
-    padding: 0 4px;
+    padding: 1px 4px;
     display: inline-block;
     border-radius: 5px;
   }
@@ -282,4 +283,12 @@
   .modal-film__btn-queue {
     width: 136px;
   }
+}
+
+.bug {
+  width: 100px;
+  height: 100px;
+  fill: black;
+  stroke: black;
+  display: block;
 }
