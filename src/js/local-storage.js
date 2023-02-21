@@ -41,7 +41,7 @@ const addtoWatched = (watchedBtn, id) => {
 };
 
 const addtoQueue = (queueBtn, id) => {
-  const queue = [] || JSON.parse(localStorage.getItem('queue'));
+  const queue =  JSON.parse(localStorage.getItem('queue')) || [];
   if (!isInQueue(id)) {
     queue.push(id);
 
