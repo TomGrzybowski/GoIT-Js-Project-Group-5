@@ -157,8 +157,10 @@ export function trendingPageSelectorClickHandler(e) {
 }
 
 export function watchedPageSelectorClickHandler(e) {
+  const watchedBtn = document.querySelector('.active');
   const target = e.target;
-
-  if (target.classList.contains('pagination-button'))
-    populateSection(Number(target.dataset.goToPage));
+  console.log(watchedBtn, 'ssdsd');
+  if (target.classList.contains('pagination-button')) {
+    populateSection(watchedBtn, Number(target.dataset.goToPage));
+  }
 }

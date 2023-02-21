@@ -17,6 +17,11 @@
   display: none;
 }
 
+#next-dots,
+#prev-dots {
+  pointer-events: none;
+}
+
 .pagination-button {
   font-weight: 500;
   font-size: 12px;
@@ -30,7 +35,7 @@
   cursor: pointer;
 }
 
-.main{
+.main {
   padding-bottom: 100px;
 }
 .movies {
@@ -100,7 +105,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .main{
+  .main {
     padding-bottom: 77px;
   }
   .movies {

@@ -76,6 +76,7 @@ function initListeners() {
       if (!isActiveButton) {
         markActiveButton(e.target);
         populateSection(e.target);
+        console.log(e.target);
       }
     })
   );
@@ -89,12 +90,13 @@ export function populateSection(target, page = 1) {
   sectionContainer.classList.add(HIDDEN_SECTION_CLASS);
   const timeout = setTimeout(() => {
     sectionContainer.innerHTML = null;
+    console.log(target);
     const selectedSectionId = target.getAttribute('id') ?? WATCHED_SECTION_ID;
 
     const elements = JSON.parse(readSectionFromLocalStorage(selectedSectionId));
     console.log(elements.length);
 
-    const moviesPerPage = 6;
+    const moviesPerPage = 9;
 
     const paginationData = {
       currentPage: page,
@@ -111,10 +113,13 @@ export function populateSection(target, page = 1) {
       getMovieDetails(elements);
 
       for (let i = firstMovie; i < lastMovie; i++) {
+        if (!elements[i]) {
+          continue;
+        }
         renderMovieElement(elements[i]);
       }
 
-      elements.forEach(movieID => renderMovieElement(movieID));
+      // elements.forEach(movieID => renderMovieElement(movieID));
     }
     sectionContainer.classList.remove(HIDDEN_SECTION_CLASS);
     clearTimeout(timeout);
