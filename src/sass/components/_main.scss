@@ -59,6 +59,7 @@
   background-color: var(--color-white);
   margin-bottom: 30px;
   cursor: pointer;
+  transition: scale 0.4s ease-in-out;
 
   &__image {
     height: 402px;
@@ -80,11 +81,9 @@
   object-fit: cover;
   border-radius: 5px;
 }
-.movie-card:hover{
-//  border-radius: 5px;
-  // box-shadow: -1px -1px 26px 0px black;
-  scale: 1.009;
-  transition: 0.4s;
+.movie-card:hover,
+.movie-card:focus {
+  scale: 1.02;
 }
 
 .movie-title {

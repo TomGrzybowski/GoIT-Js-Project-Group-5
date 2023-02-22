@@ -27,13 +27,13 @@ const addtoWatched = (watchedBtn, id) => {
     setTimeout(() => {
       watchedBtn.textContent = 'REMOVE FROM WATCHED';
     }, 1000);
-    Notify.success('ADDED TO WATCHED');
+    Notify.success('Successfully added to watched');
   } else {
     watched.splice(watched.indexOf(id), 1);
     localStorage.setItem('watched', JSON.stringify(watched));
 
     watchedBtn.textContent = 'REMOVED FROM WATCHED';
-    Notify.success('REMOVED FROM WATCHED');
+    Notify.success('Successfully removed from watched');
     setTimeout(() => {
       watchedBtn.textContent = 'ADD TO WATCHED';
     }, 1000);
@@ -51,12 +51,12 @@ const addtoQueue = (queueBtn, id) => {
     setTimeout(() => {
       queueBtn.textContent = 'REMOVE FROM QUEUE';
     }, 1000);
-    Notify.success('ADDED TO QUEUE');
+    Notify.success('Successfully added to queue');
   } else {
     queue.splice(queue.indexOf(id), 1);
     localStorage.setItem('queue', JSON.stringify(queue));
     queueBtn.textContent = 'REMOVED FROM QUEUE';
-    Notify.success('REMOVED FROM QUEUE');
+    Notify.success('Successfully removed from queue');
     setTimeout(() => {
       queueBtn.textContent = 'ADD TO QUEUE';
     }, 1000);
