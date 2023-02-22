@@ -16,6 +16,7 @@
 }
 
 .modal__background {
+  backdrop-filter: blur(1px);
   margin: 0;
   position: fixed;
   width: 100%;
@@ -26,6 +27,7 @@
 }
 
 .modal-film {
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   position: absolute;
   display: flex;
@@ -64,6 +66,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    transition: stroke 0.4s ease-in;
   }
 
   &__close-icon:hover {
@@ -168,6 +171,7 @@
   border-radius: 5px;
   border: 0px;
   cursor: pointer;
+  transition: all 0.4s ease-in;
 }
 
 .modal-film__btn-queue {
@@ -182,17 +186,18 @@
   border-radius: 5px;
   border: 1.5px solid var(--color-black);
   cursor: pointer;
+  transition: all 0.4s ease-in;
 }
 .modal-film__btn-watched:hover {
   color: var(--color-modal-film);
   background-color: var(--color-white);
   border: 1.5px solid var(--color-modal-film);
-  box-shadow: 0px 8px 43px var(--color-shadow);
+  box-shadow: 0px 8px 40px var(--color-shadow);
 }
 .modal-film__btn-queue:hover {
   color: var(--color-white);
   background-color: var(--color-black);
-  box-shadow: 0px 8px 43px var(--color-shadow);
+  box-shadow: 0px 8px 40px var(--color-shadow);
 }
 
 @media screen and (min-width: 658px) and (max-width: 1024px) {

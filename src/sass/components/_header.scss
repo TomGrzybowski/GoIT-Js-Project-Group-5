@@ -1,3 +1,9 @@
+::placeholder {
+  color: var(--color-white);
+}
+:-moz-placeholder {
+  color: white;
+}
 .header-home {
   background-color: var(--color-background-image);
   background-image: linear-gradient(
@@ -78,6 +84,7 @@
   border-left: none;
   border-bottom: 0.5px solid var(--color-white);
   background: none;
+  transition: all 0.4s ease-in-out;
 }
 #search-box:hover,
 #search-box:focus {
