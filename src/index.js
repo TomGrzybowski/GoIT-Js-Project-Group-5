@@ -7,4 +7,5 @@ import './js/modal-team';
 import './js/local-storage';
 import './js/arrow-up';
 
+
 window.onload = getAndDisplayTrendingMovies(1);
